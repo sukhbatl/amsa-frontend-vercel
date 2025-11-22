@@ -1,0 +1,26 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+    <div fxLayout="column" fxLayout.lt-md="column" class="donationOuter">
+        <div class="donationText" fxLayout="column">
+            <img class="donLogo" src="assets/updated_AMSA.png" title="AMSA Logo">
+            <div>
+                {{translationText.donation_text_1}}
+                <br><br>
+                {{translationText.donation_text_2}}
+                <br><br>
+                {{translationText.donation_text_3}}
+            </div>
+        </div>
+        <div class="donorBox">
+            <iframe src="https://donorbox.org/embed/amsa-fundraiser?amount=20"
+                    height="500px"
+                    width="100%"
+                    style="max-width:500px; min-width:310px; max-height:none!important"
+                    seamless="seamless"
+                    name="donorbox"
+                    frameborder="0"
+                    scrolling="no"
+                    allowpaymentrequest>
+            </iframe>
+        </div>
+    </div>
+</ng-container>  

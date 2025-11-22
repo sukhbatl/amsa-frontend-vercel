@@ -1,0 +1,74 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+
+  <a>
+    <img fxLayoutAlign="center center" src="assets/slideshow/AGM_2015.jpg" alt="agm-background" class="background">
+    <figcaption style="text-align: right;">AGM 2015 in Chicago</figcaption>
+  </a>
+
+  <div fxLayout="column">
+    <h2 class="agmMotto pt-6">
+      {{translationText.agm_text_main}}
+    </h2>
+    <p>
+      <li>
+        {{translationText.agm_text_1}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_2}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_3}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_4}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_5}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_6}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_7}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_8}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_9}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_10}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_11}}
+      </li>
+      <br>
+      <li>
+        {{translationText.agm_text_12}}
+      </li>
+
+    </p>
+    <!-- <div fxLayout="row" fxLayoutGap="2em">
+      <div fxFlex="50" fxLayout="column">
+        <p><b>Venmo QR Code:</b> <br> (Америкт байгаа бол)</p>
+        <img class="qr" src="https://scontent-bos3-1.xx.fbcdn.net/v/t1.0-9/139806683_1159219927829832_6327456201291244609_n.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=T3sW2YhVG_sAX80dO_3&_nc_ht=scontent-bos3-1.xx&oh=1e5fb624487cccced636f1d5f1bd5417&oe=602AE09F" alt="QR code not working. Please contact AMSA.">
+      </div>
+      <div fxFlex="50" fxLayout="column">
+        <p><b>QPay QR code: </b> <br> (Монголд байгаа бол)</p>
+        <img class="qr" src="https://scontent-bos3-1.xx.fbcdn.net/v/t1.0-9/139930953_1159208261164332_7255482977602920285_n.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=essgqOjUnYsAX-29Hbx&_nc_ht=scontent-bos3-1.xx&oh=71f38297cd169677cc07f8d5f90bc177&oe=602880EC" alt="QR code not working. Please contact AMSA.">
+      </div> -->
+    <!-- </div> -->
+  </div>
+
+</ng-container>

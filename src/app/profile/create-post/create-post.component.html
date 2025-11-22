@@ -1,0 +1,55 @@
+<div *ngIf="isLoading" class="p-progress-spinner-center-page">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <form [formGroup]="newPostForm">
+    <div class="p-field">
+      <label for="title">Title</label>
+      <input pInputText id="title" placeholder="Title" formControlName="title">
+    </div>
+    <div class="p-field">
+      <label for="subtitle">Subtitle</label>
+      <input pInputText id="subtitle" placeholder="Subtitle" formControlName="subTitle">
+    </div>
+
+    <p>Preview Image:</p>
+    <div>
+      <p-button label="Select File" (onClick)="newPostImageInput.click()" styleClass="p-button-outlined"></p-button>
+      <input [hidden]="true" #newPostImageInput type="file" accept="image/*" (change)="processPostImage($event)">
+    </div>
+    <div fxLayoutAlign="center center">
+      <img *ngIf="imagePreviewUrl !== '' && imagePreviewUrl && newPostForm.get('image')?.valid" [src]="imagePreviewUrl" alt="Preview Image" title="Preview Image" class="previewNewBadgeImage">
+    </div>
+    <div class="p-field">
+      <label for="category">Category</label>
+      <p-select id="category" formControlName="category" [options]="categoryOptions" optionLabel="label" optionValue="value" placeholder="Select Category">
+      </p-select>
+    </div>
+    <div class="p-field">
+      <label for="tags">Tags</label>
+      <input pInputText id="tags" placeholder="Tags comma separated" formControlName="tags">
+    </div>
+  </form>
+  <p-tabs>
+    <p-tablist>
+      <p-tab value="preview" header="Preview"></p-tab>
+      <p-tab value="html" header="HTML"></p-tab>
+    </p-tablist>
+    <p-tabpanels>
+      <p-tabpanel value="preview">
+        <ngx-wig [(ngModel)]="content" placeholder="Enter your content here..."></ngx-wig>
+      </p-tabpanel>
+      <p-tabpanel value="html">
+        <div class="p-field">
+          <label for="content">Content</label>
+          <textarea pInputText id="content" placeholder="Content" [(ngModel)]="content" rows="10"></textarea>
+        </div>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+  <p-button label="Submit" (onClick)="createArticle()" [disabled]="newPostForm.invalid"></p-button>
+</div>
+
+<p-toast></p-toast>
+

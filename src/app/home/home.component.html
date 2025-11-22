@@ -1,0 +1,37 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+
+    <div *ngIf="isLoading" class="mat-spinner-center-page">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+      <h1 class="intro">
+        {{translationText.intro}}
+      </h1>
+      <h2>
+        {{translationText.executiveMembers}}
+      </h2>
+      <div class="flex flex-wrap center justify-center">
+        <div *ngFor="let user of homeData?.recentTuz" class="m-2">
+          <amsa-user-card [name]="user.User.firstName + ' ' + user.User.lastName" [userId]="user.UserId"
+            [email]="user.User.email" [schoolName]="user.User.schoolName" [profilePic]="backendUrl + user.User.profilePic"
+            [position]="user.name">
+          </amsa-user-card>
+        </div>
+      </div>
+    </div>
+  
+    <h2>Donation Box</h2>
+    <div class="flex justify-center">
+      <iframe src="https://donorbox.org/embed/amsa-fundraiser?amount=20" height="700px" width="100%"
+        style="max-width:500px; min-width:310px; max-height: 800px;" seamless="seamless" name="donorbox" frameborder="0"
+        scrolling="no" allowpaymentrequest>
+      </iframe>
+    </div>
+  
+    <h2>{{translationText.amsaSong}}</h2>
+    <div fxLayoutAlign="center center">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/235405597&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+      </iframe>
+    </div>
+</ng-container>

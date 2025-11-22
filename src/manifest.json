@@ -1,0 +1,71 @@
+{
+  "name": "AMSA - Association of Mongolian Students in America",
+  "short_name": "AMSA",
+  "description": "Connecting over 600 Mongolian students pursuing higher education in the US",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d84315",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "community", "social"],
+  "icons": [
+    {
+      "src": "/assets/images/AMSA_logo_1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/AMSA_logo_1024.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/AMSA_logo_1024.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "About AMSA",
+      "short_name": "About",
+      "description": "Learn about AMSA's mission and vision",
+      "url": "/about",
+      "icons": [
+        {
+          "src": "/assets/images/AMSA_logo_1024.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Our Team",
+      "short_name": "Team",
+      "description": "Meet the AMSA team members",
+      "url": "/members",
+      "icons": [
+        {
+          "src": "/assets/images/AMSA_logo_1024.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "AGM",
+      "short_name": "AGM",
+      "description": "Annual General Meeting information",
+      "url": "/work/agm",
+      "icons": [
+        {
+          "src": "/assets/images/AMSA_logo_1024.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

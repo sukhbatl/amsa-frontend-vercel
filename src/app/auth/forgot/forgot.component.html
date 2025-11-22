@@ -1,0 +1,29 @@
+<div class="grid grid-cols-3">
+    <div class="lg:col-span-1"></div>
+    <div class="lg:col-span-1 col-span-3">
+        <p-card class="p-4 mt-16 m-2">
+            <h1 class="font-bold text-2xl my-4 text-center">Forgot Password</h1>
+            <form [formGroup]="resetForm" (ngSubmit)="forgotPassword()">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                    <input 
+                        pInputText 
+                        id="email"
+                        type="email" 
+                        formControlName="email" 
+                        class="w-full"
+                        placeholder="Enter your email"
+                    />
+                </div>
+                <p-button 
+                    [disabled]="isLoading" 
+                    type="submit" 
+                    label="Send email"
+                    styleClass="w-full"
+                    [loading]="isLoading">
+                </p-button>
+            </form>
+        </p-card>
+    </div>
+</div>
+<p-toast></p-toast>

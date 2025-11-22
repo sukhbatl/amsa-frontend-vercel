@@ -1,0 +1,138 @@
+<div fxLayoutAlign="center center" class="logo">
+  <img src="assets/images/AMSA_logo_1024.png" title="AMSA Logo">
+</div>
+
+<p-stepper [linear]="false">
+  <p-step>
+    <form [formGroup]="accountInfo">
+      <ng-template pStepLabel>{{(translationText$ | async).accountInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="email-input">Email (.edu)</label>
+        <input id="email-input" pInputText placeholder="Email (.edu)" formControlName="email" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="password-input">Password</label>
+        <input id="password-input" pInputText placeholder="Password" formControlName="password" required type="password" class="w-full">
+      </div>
+      <div>
+        <p-button label="{{(translationText$ | async).next}}" (onClick)="nextStep()"></p-button>
+      </div>
+    </form>
+  </p-step>
+
+  <p-step>
+    <form [formGroup]="personalInfo">
+      <ng-template pStepLabel>{{(translationText$ | async).personalInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="firstname-input">First Name</label>
+        <input id="firstname-input" pInputText placeholder="First Name" formControlName="firstname" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="lastname-input">Last Name</label>
+        <input id="lastname-input" pInputText placeholder="Last Name" formControlName="lastname" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="personal-email-input">Personal Email</label>
+        <input id="personal-email-input" pInputText placeholder="Personal Email" formControlName="personalEmail" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="phone-input">Phone</label>
+        <input id="phone-input" pInputText placeholder="Phone" formControlName="phone" class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="birthDate-input">Birth Date</label>
+        <p-calendar id="birthDate-input" formControlName="birthDate" iconDisplay="input" class="w-full"></p-calendar>
+      </div>
+      <div formGroupName="address">
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="address1-input">Address 1</label>
+          <input id="address1-input" pInputText placeholder="Address 1" formControlName="address1" required class="w-full">
+        </div>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="address2-input">Address 2</label>
+          <input id="address2-input" pInputText placeholder="Address 2" formControlName="address2" class="w-full">
+        </div>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="city-input">City</label>
+          <input id="city-input" pInputText placeholder="City" formControlName="city" required class="w-full">
+        </div>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="state-select">State</label>
+          <p-select id="state-select" formControlName="state" placeholder="State" class="w-full" required [options]="states_us"></p-select>
+        </div>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="zip-input">ZIP Code</label>
+          <input id="zip-input" pInputText placeholder="ZIP Code" formControlName="zip" required class="w-full">
+        </div>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <p-button label="{{(translationText$ | async).back}}" (onClick)="previousStep()"></p-button>
+        <p-button label="{{(translationText$ | async).next}}" (onClick)="nextStep()"></p-button>
+      </div>
+    </form>
+  </p-step>
+  <p-step>
+    <form [formGroup]="schoolInfo">
+      <ng-template pStepLabel>{{(translationText$ | async).schoolInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="schoolName-input">School Name</label>
+        <input id="schoolName-input" pInputText placeholder="School Name" formControlName="schoolName" required class="w-full">
+      </div>
+      <div formGroupName="address" fxLayout="column" required>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="school-city-input">City</label>
+          <input id="school-city-input" pInputText placeholder="City" formControlName="city" required class="w-full">
+        </div>
+        <div class="flex flex-col gap-3 mb-4">
+          <label for="school-state-select">State</label>
+          <p-select id="school-state-select" formControlName="state" placeholder="State" class="w-full" required [options]="states_us"></p-select>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="degree-select">Pursuing Degree</label>
+        <p-select id="degree-select" formControlName="degree" placeholder="Pursuing Degree" class="w-full" required [options]="degreeOptions" optionLabel="label" optionValue="value"></p-select>
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="graduationYear-input">Graduation Year</label>
+        <input id="graduationYear-input" pInputText placeholder="Graduation Year" formControlName="graduationYear" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="schoolYear-select">School Year</label>
+        <p-select id="schoolYear-select" formControlName="schoolYear" placeholder="School Year" class="w-full" required [options]="schoolYearOptions" optionLabel="label" optionValue="value"></p-select>
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="major-input">Major</label>
+        <input id="major-input" pInputText placeholder="Major" formControlName="major" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="doubleMajor-input">Second Major</label>
+        <input id="doubleMajor-input" pInputText placeholder="Second Major" formControlName="doubleMajor" class="w-full">
+      </div>
+      <div class="flex gap-3 mt-4">
+        <p-button label="{{(translationText$ | async).back}}" (onClick)="previousStep()"></p-button>
+        <p-button label="{{(translationText$ | async).next}}" (onClick)="nextStep()"></p-button>
+      </div>
+    </form>
+  </p-step>
+  <p-step>
+    <form [formGroup]="socialInfo">
+      <ng-template pStepLabel>{{(translationText$ | async).socialMediaInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="facebook-input">Facebook Profile Link</label>
+        <input id="facebook-input" pInputText placeholder="Facebook Profile Link" formControlName="facebook" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="instagram-input">Instagram Profile Link</label>
+        <input id="instagram-input" pInputText placeholder="Instagram Profile Link" formControlName="instagram" class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="linkedin-input">Linkedin Profile Link</label>
+        <input id="linkedin-input" pInputText placeholder="Linkedin Profile Link" formControlName="linkedin" class="w-full">
+      </div>
+      <div class="flex gap-3 mt-4">
+        <p-button label="{{(translationText$ | async).back}}" (onClick)="previousStep()"></p-button>
+        <p-button label="{{(translationText$ | async).register}}" (onClick)="submitForm()" [disabled]="!(personalInfo.valid && socialInfo.valid && schoolInfo.valid && accountInfo.valid)"></p-button>
+      </div>
+    </form>
+  </p-step>
+</p-stepper>

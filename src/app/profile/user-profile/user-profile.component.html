@@ -1,0 +1,104 @@
+<div *ngIf="isLoading" class="p-progress-spinner-center-page">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+
+<div *ngIf="!isLoading" class="flex flex-col sm:flex-row">
+  <div class="userContainer">
+    <p-card class="profile">
+      <div class="object-cover w-40 h-40 ml-5 self-center my-2">
+        <img [src]="backendUrl + profile?.profilePic" title="Profile Pic" class="rounded-full">
+      </div>
+      <div class="justify-center userName">
+        <b>{{profile?.firstName}} {{profile?.lastName}}</b>
+      </div>
+      <div class="justify-center space-x-5">
+        <a class="userFb" pButton [href]="profile?.facebook" target="_blank">
+          <span class="fa fa-facebook fa-2x"></span>
+        </a>
+        <a class="userIg" pButton [href]="profile?.instagram" target="_blank">
+          <span class="fa fa-instagram fa-2x"></span>
+        </a>
+        <a class="userIn" pButton [href]="profile?.linkedin" target="_blank">
+          <span class="fa fa-linkedin fa-2x"></span>
+        </a>
+      </div>
+      <br>
+    </p-card>
+  </div>
+
+  <div class="details">
+    <p-accordion [value]="['0']" [multiple]="true">
+      <p-accordion-panel value="0">
+        <p-accordion-header>
+          Information
+        </p-accordion-header>
+        <p-accordion-content>
+          <p-card>
+            <div class="p-card-title">
+              Information
+            </div>
+            <div fxLayout="row wrap">
+              <div class="flex flex-row">
+                <div>
+                  <div class="p-list-item">School:</div>
+                  <div class="p-list-item">School email:</div>
+                  <div class="p-list-item">Major:</div>
+                  <div class="p-list-item">Second Major:</div>
+                  <div class="p-list-item">Bio:</div>
+                  <div class="p-list-item">Degree:</div>
+                </div>
+                <div>
+                  <div class="p-list-item">{{profile?.schoolName}}</div>
+                  <div class="p-list-item">{{profile?.email}}</div>
+                  <div class="p-list-item">{{profile?.major}}</div>
+                  <div class="p-list-item">{{profile?.major2}}</div>
+                  <div class="p-list-item">{{profile?.bio}}</div>
+                  <div class="p-list-item">{{profile?.degreeLevel}}</div>
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </p-accordion-content>
+      </p-accordion-panel>
+
+      <p-accordion-panel value="1">
+        <p-accordion-header>
+          Badges
+        </p-accordion-header>
+        <p-accordion-content>
+          <div class="flex flex-row flex-wrap gap-4">
+            <div *ngFor="let badge of profile?.Badges" class="cursor-pointer hover:opacity-80 transition-opacity" routerLink="/badges/{{badge.id}}">
+              <img [src]="backendUrl + badge.picUrl" [title]="badge.name" [alt]="badge.name" class="w-24 h-24 object-cover rounded">
+            </div>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+
+      <p-accordion-panel value="2">
+        <p-accordion-header>
+          Posts
+        </p-accordion-header>
+        <p-accordion-content>
+          <div class="flex flex-wrap justify-center items-center">
+            <p-card *ngFor="let post of profile?.Posts" class="post p-card-hover" routerLink="/post/{{post.id}}">
+              <div class="p-card-header">
+                <div class="p-card-title">{{post.title}}</div>
+                <div class="p-card-subtitle">{{post.subtitle}}</div>
+              </div>
+              <img [src]="backendUrl + post.picUrl" [title]="post.title" class="postImage">
+              <div class="p-card-actions">
+                <button pButton (click)="likeOrDislikePost(post.id)">LIKE</button>
+                <button pButton routerLink="/post/{{post.id}}">Read More...</button>
+              </div>
+            </p-card>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  </div>
+
+</div>
+
+<p-confirmDialog></p-confirmDialog>
+

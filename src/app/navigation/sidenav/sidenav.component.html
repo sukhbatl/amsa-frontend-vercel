@@ -1,0 +1,85 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+  <nav role="navigation" aria-label="Main navigation" class="p-4">
+    <div class="mobile-header mb-4">
+      <p-button 
+        icon="pi pi-times" 
+        [text]="true" 
+        (onClick)="onClose()" 
+        aria-label="Close navigation menu" 
+        class="close-button">
+      </p-button>
+      <h2 class="sr-only">Navigation Menu</h2>
+    </div>
+
+    <div class="border-b border-gray-200 mb-4"></div>
+
+    <div class="space-y-2">
+      <a (click)="onClose()" routerLink="/" aria-label="Go to homepage" 
+          class="flex items-center p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <i class="pi pi-home mr-3"></i>
+        <span>{{translationText.home}}</span>
+      </a>
+
+      <a (click)="onClose()" routerLink="about" aria-label="Learn about AMSA" 
+          class="flex items-center p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <i class="pi pi-info-circle mr-3"></i>
+        <span>{{translationText.about}}</span>
+      </a>
+
+      <a (click)="onClose()" routerLink="members" aria-label="View our team" 
+          class="flex items-center p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <i class="pi pi-users mr-3"></i>
+        <span>{{translationText.team}}</span>
+      </a>
+
+      <div class="space-y-1">
+        <button (click)="showSubmenu = !showSubmenu" [attr.aria-expanded]="showSubmenu" 
+                aria-label="Toggle projects submenu"
+                class="flex items-center justify-between w-full p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+          <div class="flex items-center">
+            <i class="pi pi-briefcase mr-3"></i>
+            <span *ngIf="isExpanded || isShowing">{{translationText.ourProjects}}</span>
+          </div>
+          <i class="pi pi-chevron-down" [class.rotated]="showSubmenu"></i>
+        </button>
+        
+        <div class="submenu ml-6" [ngClass]="{'expanded' : showSubmenu}" 
+             *ngIf="isShowing || isExpanded" role="group" aria-label="Projects submenu">
+          <a href="/work/buop" (click)="onClose()" aria-label="Learn about BUOP program" 
+             class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+            <i class="pi pi-graduation-cap mr-3"></i>
+            <span>{{translationText.buop}}</span>
+          </a>
+          <a href="/work/agm" (click)="onClose()" aria-label="Learn about AGM event" 
+             class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+            <i class="pi pi-calendar mr-3"></i>
+            <span>{{translationText.agm}}</span>
+          </a>
+          <a href="/work/podcast" (click)="onClose()" aria-label="Listen to our podcasts" 
+             class="flex items-center p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+            <i class="pi pi-microphone mr-3"></i>
+            <span>{{translationText.podcasts}}</span>
+          </a>
+        </div>
+      </div>
+
+      <a (click)="onClose()" routerLink="donation" aria-label="Make a donation" 
+          class="flex items-center p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+        <i class="pi pi-heart mr-3"></i>
+        <span>{{translationText.donationBox}}</span>
+      </a>
+
+      <div class="border-b border-gray-200 my-4"></div>
+
+      <a (click)="changeLanguage()" class="language-toggle flex items-center p-3 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors" 
+         aria-label="Change language">
+        <img class="language-flag mr-3"
+        src={{translationText.languageLogo}}
+        alt="Language flag"
+        width="24"
+        height="18"/>
+        <span>{{translationText.language}}</span>
+      </a>
+    </div>
+  </nav>
+</ng-container>

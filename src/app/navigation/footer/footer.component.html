@@ -1,0 +1,14 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+  <footer class="h-36 font-garamond text-md md:text-lg bg-black text-white">
+    <div class="flex flex-row justify-center space-x-14 py-8 text-xl md:text-3xl text-white">
+      <a href="https://www.facebook.com/amsa.amokh" class="fa fa-facebook text-white hover:opacity-80 transition-opacity"></a>
+      <a href="https://www.instagram.com/amsa.amokh/" class="fa fa-instagram text-white hover:opacity-80 transition-opacity" target="_blank"></a>
+      <a href="https://www.youtube.com/channel/UCd7zhLTluYQkA7SwtHV08rw" class="fa fa-youtube-play text-white hover:opacity-80 transition-opacity" target="_blank"></a>
+    </div>
+    <div class="text-white text-center">
+      <div class="text-sm md:text-base">
+        Version {{appVersion}}
+      </div>
+    </div>
+  </footer>
+</ng-container>

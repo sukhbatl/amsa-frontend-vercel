@@ -1,0 +1,13 @@
+<div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
+    <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent" animationDuration="1s"></p-progressSpinner>
+</div>
+
+<div *ngIf="!isLoading" class="flex flex-wrap justify-center">
+    <div class="flex flex-wrap justify-center">
+        <div *ngFor="let user of members" class="m-2">
+            <amsa-user-card [name]="user.firstName + ' ' + user.lastName" [userId]="user.id"
+                [email]="user.email" [schoolName]="user.schoolName" [profilePic]="backendUrl + user.profilePic">
+            </amsa-user-card>
+        </div>
+    </div>
+</div>

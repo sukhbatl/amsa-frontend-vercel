@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-garamond: "EB Garamond";
+
+  --container-DEFAULT: '1rem';
+  --container-sm: '2rem';
+
+  --color-primary: "#eb6e54";
+};
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}

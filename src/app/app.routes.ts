@@ -1,0 +1,32 @@
+import { Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+
+export const routes: Routes = [
+    {path: '', loadComponent: () => import('./landing/landing.component').then((m) => m.LandingComponent),},
+    {path: 'about', loadComponent: () => import('./about/about.component').then((m) => m.AboutComponent),},
+    {path: 'about/contact', loadComponent: () => import('./about/contact/contact.component').then((m) => m.ContactComponent),},
+    {path: 'members', loadComponent: () => import('../app/members/members.component').then((m) => m.MembersComponent),},
+    {path: 'donation', loadComponent: () => import('../app/donation/donation.component').then((m) => m.DonationComponent),},
+    {path: 'profile', loadComponent: () => import('../app/profile/profile.component').then((m) => m.ProfileComponent),},
+    {path: 'class_year', loadComponent: () => import('../app/class_year/class_year.component').then((m) => m.ClassYearComponent),},
+    {path: 'public-profile/user/:identifier', loadComponent: () => import('../app/public-profile/public-profile.component').then((m) => m.PublicProfileComponent),},
+    {path: 'profile/user/:id', loadComponent: () => import('../app/profile/user-profile/user-profile.component').then((m) => m.UserProfileComponent), canActivate: [AuthGuard], data: {level: 1},},
+    {path: 'profile/post', loadComponent: () => import('../app/profile/create-post/create-post.component').then((m) => m.CreatePostComponent),},
+    {path: 'profile/post/:id', loadComponent: () => import('../app/profile/create-post/create-post.component').then((m) => m.CreatePostComponent), canActivate: [AuthGuard], data: {level: 1},},
+    {path: 'badges', loadComponent: () => import('../app/badges/badges.component').then((m)=> m.BadgesComponent),},
+    {path: 'badges/:id', loadComponent: () => import('../app/badges/badge-users/badge-users.component').then((m)=> m.BadgeUsersComponent),},
+    {path: 'work', loadComponent: () => import('../app/work/work.component').then((m) => m.WorkComponent),},
+    {path: 'work/buop', loadComponent: () => import('../app/work/buop/buop.component').then((m) => m.BuopComponent),},
+    {path: 'work/podcast', loadComponent: () => import('../app/work/podcast/podcast.component').then((m) => m.PodcastComponent),},
+    {path: 'work/agm', loadComponent: () => import('../app/work/agm/agm.component').then((m) => m.AgmComponent),},
+    {path: 'work/case-competition', loadComponent: () => import('../app/work/case-competition/case-competition.component').then((m) => m.CaseCompetitionComponent),},
+    {path: 'signup', loadComponent: () => import('../app/auth/signup/signup.component').then((m) => m.SignupComponent),},
+    {path: 'signup/member', loadComponent: () => import('../app/auth/member-signup/member-signup.component').then((m) => m.MemberSignupComponent),},
+    {path: 'signup/guest', loadComponent: () => import('../app/auth/guest-signup/guest-signup.component').then((m) => m.GuestSignupComponent),},
+    {path: 'login', loadComponent: () => import('../app/auth/login/login.component').then((m) => m.LoginComponent),},
+    {path: 'verify/:email', loadComponent: () => import('../app/auth/verify/verify.component').then((m) => m.VerifyComponent),},
+    {path: 'verify/:email/:hash', loadComponent: () => import('../app/auth/verify/verify.component').then((m) => m.VerifyComponent),},
+    {path: 'login/forgot', loadComponent: () => import('./auth/forgot/forgot.component').then((m) => m.ForgotComponent),},
+    {path: 'reset', loadComponent: () => import('./reset/reset.component').then((m) => m.ResetComponent),},
+    {path: 'fac195f041ec86dc707a55314b5f9df3.txt', pathMatch: 'full', loadComponent: () => import('./reset/reset.component').then((m) => m.ResetComponent),},
+];

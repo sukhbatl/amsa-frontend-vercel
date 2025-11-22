@@ -1,0 +1,94 @@
+stages:
+  - deploy
+
+.deploy_template: &deploy_template
+  image: alpine:3.19
+  stage: deploy
+  before_script:
+    - apk add --no-cache openssh-client bash git
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - printf "Host *\n  StrictHostKeyChecking no\n" > ~/.ssh/config
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+prod-deploy:
+  <<: *deploy_template
+  script:
+    - |
+      ssh -i ~/.ssh/id_rsa "$VM_USER@$VM_HOST" bash -s << 'EOF'
+      set -euo pipefail
+
+      REPO_DIR="${DEPLOY_PATH:-/root/amsa/test/amsa-frontend}"
+
+      if [ ! -d "$REPO_DIR/.git" ]; then
+        echo "Repo not found at $REPO_DIR or not a git repo" >&2
+        exit 1
+      fi
+
+      cd "$REPO_DIR"
+
+      # Ensure correct branch and clean working tree
+      git fetch --all --prune
+      git reset --hard origin/main
+      git clean -fdx
+
+      # Rebuild from scratch
+      rm -rf dist
+      npm ci
+      npm run build
+
+      # Verify build output exists
+      if [ ! -f "$REPO_DIR/dist/amsa-frontend/server/server.mjs" ]; then
+        echo "Error: Build output not found at $REPO_DIR/dist/amsa-frontend/server/server.mjs" >&2
+        exit 1
+      fi
+      
+      echo "Build successful, server.mjs found"
+      
+      # Remove node_modules to save disk space and memory
+      echo "Cleaning up node_modules to save space..."
+      rm -rf "$REPO_DIR/node_modules"
+      echo "✓ node_modules removed (build artifacts retained in dist/)"
+
+      # Update the main ecosystem config with the optimized version
+      cd /root/amsa/test
+      cp "$REPO_DIR/ecosystem.config.js" ./ecosystem.config.js
+      echo "✓ Updated ecosystem configuration with optimized memory settings"
+      
+      # Stop all existing PM2 processes
+      echo "Stopping all PM2 processes..."
+      pm2 delete all || true
+      pm2 flush
+      
+      # Start both services fresh with production environment
+      echo "Starting AMSA services with optimized configuration..."
+      pm2 start ecosystem.config.js --env production
+      
+      # Wait for services to stabilize
+      sleep 10
+      
+      # Show PM2 status
+      echo "Current PM2 processes:"
+      pm2 list
+      
+      # Verify both services are online
+      BACKEND_STATUS=$(pm2 jlist | grep -o '"name":"AMSA Backend".*"status":"[^"]*"' | grep -o 'status":"[^"]*"' | cut -d'"' -f3 || echo "not_found")
+      FRONTEND_STATUS=$(pm2 jlist | grep -o '"name":"AMSA Frontend".*"status":"[^"]*"' | grep -o 'status":"[^"]*"' | cut -d'"' -f3 || echo "not_found")
+      
+      echo "Backend status: $BACKEND_STATUS"
+      echo "Frontend status: $FRONTEND_STATUS"
+      
+      if [ "$FRONTEND_STATUS" = "online" ]; then
+        echo "✓ AMSA Frontend is online"
+        pm2 save
+      else
+        echo "✗ AMSA Frontend is not online (status: $FRONTEND_STATUS)" >&2
+        echo "Showing recent logs:" >&2
+        pm2 logs --lines 100 --nostream
+        exit 1
+      fi
+      EOF
+
+

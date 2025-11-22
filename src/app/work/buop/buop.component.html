@@ -1,0 +1,167 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+    <a class="flex justify-center">
+        <img src="https://i.ibb.co/3yPs1CC/buop-logo.png" alt="buop-logo">
+    </a>
+    <br><br>
+
+    <p-tabs [(value)]="activeTab">
+        <p-tablist>
+            <p-tab value="0">Хөтөлбөр</p-tab>
+            <p-tab value="1">Хандив</p-tab>
+            <p-tab value="2">Багш нар</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+            <p-tabpanel value="0">
+            <h1 class="text-center py-8">
+                Үндсэн хичээлүүд
+            </h1>
+            <div class="flex flex-row space-x-5">
+                <div class="flex flex-col">
+                    <div>
+                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> Undergraduate Application Process</h3>
+                        <p>
+                            Америкийн их сургуулийн элсэлтийн үйл явц нь Монголынхоос маш өөр байдаг тул ганцаараа өргөдлөө
+                            явуулах үед мэдэхгүй зүйлс их гардаг. Тиймээс энэхүү хичээл нь Америкийн их сургуулийн өргөдлийн
+                            үйл явц хэрхэн явагддаг мөн элсэлтийн албаныхан сурагчдаа хэрхэн сонгон авдаг талаар бид
+                            өөрсдийн туршлагаа хуваалцах болно. Мөн өргөдлийн эсээг хэрхэн бичих, санаагаа хэрхэн
+                            өвөрмөцөөр илэрхийлэх талаар маш сонирхолтой хичээл, дасгалууд орох болно. </p>
+                    </div>
+                    <div>
+                        <h3><i class="fa fa-language" aria-hidden="true"></i> Pre-TOEFL</h3>
+                        <p>
+                            Энэ сургалт нь IBT-TOEFL-ын шалгалтад бэлдэх үеийн өмнөх шат юм. Сургалтын явцад англи хэлний
+                            ахисан шатны дүрмүүд болон англи хэлний эсээ бичих чадварыг эхнээс нь олгохоос гадна TOEFL-ын
+                            шалгалтад бэлтгэх хялбар материалууд дээр суурилан явагддагаараа онцлогтой юм. Хэрвээ та
+                            өөрийгөө TOEFL-д бэлдэхэд арай бэлэн биш гэж бодож байвал энэ хичээлийг сонирхоод үзээрэй. </p>
+                    </div>
+                    <div>
+                        <h3> <i class="fa fa-book" aria-hidden="true"></i> SAT English</h3>
+                        <p>
+                            Энэ хичээл нь баклаврын түвшний Америк их сургуулиудын бүгд шаарддаг SAT шалгалт бөгөөд
+                            унших болон бичих гэсэн 2 хэсгээс бүрддэг. SAT шалгалт нь таны унших чадварыг шалгахаас гадна
+                            бичих арга техник болон байнга тохиолддог дүрмийн алдаануудыг шалгадаг. Та энэ хичээлд 
+                            хамрагдсанаар энэ шалгалтад хэрхэн өндөр оноо авах мөн яаж бэлдэх тухай манай багш нараас 
+                            үнэтэй зөвлөгөө авах юм. 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div>
+                        <h3><i class="fa fa-check-square-o" aria-hidden="true"></i> Graduate Application Process</h3>
+                        <p>
+                            АНУ-д Graduate сургууль буюу Мастер, Докторын зэргээр хэрхэн элсэх талаар мэдээлэл болон
+                            туршлагаа АНУ-ын шилдэг их дээд сургуульд Докторын зэргээр суралцсан багш өөрийн
+                            хэрхэн тэнцсэн туршлагаа хуваалцах болно. Үүнд өргөдлөө явуулахад ямар шалгуур тавьдаг, TOEFL, 
+                            GMAT/GRE-д хэрхэн бэлдэх, ямар тэтгэлэгийн боломжууд байгаа, сургуулиа хэрхэн сонгох, 
+                            өргөдлийн эсээг бичихэд туслалцаа үзүүлэх гэх мэт багтах юм. </p>
+                    </div>
+                    <div>
+                        <h3><i class="fa fa-book" aria-hidden="true"></i> IBT-TOEFL <i class="fa fa-pencil-square-o"
+                                aria-hidden="true"></i></h3>
+                        <p>
+                            Энэ хичээл дээр IBT-TOEFL-ын бүх 4 хэсэг (Reading, Writing, Listening, Speaking) дээр хэрхэн
+                            амжилттай өгөх арга техникийг суралцах болно. Түүнээс гадна энэ хичээл нь маш олон дадлага тест
+                            хийх өргөн боломжийг олгодог. TOEFL нь өөрөө нэг стандарттай шалгалт учир та зөв мэдээлэл, олон
+                            дадлага тестийн үр дүнд хүссэн оноогоо авах боломжтой шалгалт байгаа.
+                        </p>
+                    </div>
+                    <div>
+                        <h3><i class="fa fa-superscript" aria-hidden="true"></i> SAT Math</h3>
+                        <p>
+                            Манай сургалтад сууснаар та SAT Reasoning Math-д ирдэг сэдвүүдийг мэдэж авахаас гадна
+                            түгээмэл тохиолддог бодлогуудыг хэрхэн хурдан бөгөөд зөв бодох арга техникт суралцах болно. </p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-center py-6">
+                Их сургуулийн түвшний хичээлүүд
+            </h1>
+            <div class="flex flex-row space-x-5">
+                <div class="flex flex-col">
+                    <div>
+                        <h3><i class="fa fa-desktop" aria-hidden="true"></i> Introduction to Computer Science</h3>
+                        <p>
+                            Энэ хичээл нь комьютерийн шинжлэх ухаанд анхлан суралцаж байгаа хүмүүст зориулсан. Та хэрвээ 
+                            програмчлалын талаар тодорхой хэмжээний үндсэн мэдэгдэхүүнтэй болохыг, цаашдаа энэ чиглэлээр 
+                            суралцах хүсэл эрмэлзэлтэй бол бүрэн хамрагдах боломжтой. Та энэ хичээлд хамрагдсанаар 
+                            комьютерийн үндсэн бодлогуудыг бодож сурахаас гадна  програмын хэлний талаарх ойлголттой болох, 
+                            асуудлыг үр дүнтэй шийдвэрлэх аргад суралцах юм. </p>
+                    </div>
+                    <div>
+                        <h3><i class="fa fa-bank" aria-hidden="true"></i> Introduction to Economics </h3>
+                        <p>
+                            Эдийн засгийн хичээлийн талаар их сургуулийн түвшинд суралцахыг хүсч буй, мэргэжил сонголтод 
+                            түлхэц болох энэхүү хичээлийг бид энэ жил санал болгож байна. Та хамрагдсанаар Америкийн их 
+                            сургуульд суралцдаг оюутан багш нараас мэдлэг хуримтлуулах боломжтой бөгөөд эдийн засгийн онол 
+                            түүний хэрэглэгдэхүүний талаарх үндсэн ойлголттой болох юм. </p>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div>
+                        <h3><i class="fa fa-gears" aria-hidden="true"></i> Introduction to Physics </h3>
+                        <p>
+                            Энэ хичээл нь физикийн шинжлэх ухаанд сонирхолтой, цаашлаад энэ чиглэлээр үргэлжлүүлэн 
+                            суралцахыг хүсч байгаа хүмүүст зориулсан бөгөөд их сургуулийн түвшинд заагдах юм. Та энэ 
+                            хичээлд хамрагдсанаар гадаадын их дээд сургуульд суралцаж буй оюутан багш нараас туршлага 
+                            хуримтлуулах болон сургуульдаа орохоос өмнө энэ хичээлийн талаар тодорхой мэдэгдэхүүнтэй болох 
+                            боломжтой. </p>
+                    </div>
+                    <div>
+                        <h3><i class="fa fa-bar-chart" aria-hidden="true"></i> Introduction to Statistics </h3>
+                        <p>
+                            Та энэ хичээлд хамрагдсанаар статистикийн нарийн өгөгдлүүдийг ойлгох, дүн шинжилгээ хийх зэрэг 
+                            ерөнхий ойлголтуудыг мэдэж авах юм. Энэ хичээлийг манай их сургуулийн оюутан багш нар өөрсдийн 
+                            мэдсэн сурсан зүйл дээрээ тулгуурлан арга техникээ хуваалцах болно. </p>
+                    </div>
+                </div>
+            </div>
+            </p-tabpanel>
+            
+            <p-tabpanel value="1">
+                <div class="grid grid-cols-2 gap-4 py-6">
+                <div>
+                    <img class="tetgeleg"
+                        src="https://i.ibb.co/SNhPXxD/IMG-A5-BBC9388712-1.jpg"
+                        alt="">
+                </div>
+                <div class="leading-normal">
+                    <p style="font-size:30px">
+                        <b>Бидэнд олдсон боломжийг бусдад түгээе!</b>
+                    </p>
+                    <p>
+                        Бидний хувьд Америкт тэтгэлэгтэй суралцаж байгаа нь бидний амьдралд тохиосон хамгийн
+                        талархууштай явдлын нэгээс гадна мөн бидэнд хамгийн их боломжийг өгсөн гэж боддог. Харин энэхүү
+                        боломжийг Монголынхоо илүү олон сурагчдад олгохын тулд бид энэ жил 100 хүүхдэд тэтгэлэг өгөхөөр
+                        хичээж байна. Үүнд таны оролцоо маш чухал юм шүү!
+                    </p>
+                    <p>
+                        БУОП програм маань 4 долоо хоногийн турш Америкт сурах хүсэлтэй хүүхдүүдэд өргөдлөө бэлдэхэд нь
+                        туслах хичээлүүд (Application Process, TOEFL, SAT зэрэг) мөн мэргэжлээ сонгоход нь туслах хичээлүүдийг заах болно. Та Монголын
+                        ирээдүйд хөрөнгө оруулж доорх линкээр эсвэл бидний bio дээрх линкээр хандив өгөөрэй! Бид таны
+                        нэр, хандив өгсөн дүн болон он сар өдрийг тэмдэглэж авах болно. Баярлалаа!
+                    </p>
+                    <p-button label="Хандив өгөх" (onClick)="openDonationLink()" styleClass="p-button-raised"></p-button>
+                </div>
+            </div>
+            </p-tabpanel>
+            
+            <p-tabpanel value="2">
+                <h1 class="text-center py-4">Үндсэн хичээлийн багш нар</h1>
+            <div class="flex flex-wrap justify-center space-x-3 space-y-3">
+                <amsa-user-card *ngFor="let teacher of undsen_teachers" [name]="teacher.name" [userId]="teacher.userId"
+                    [schoolName]="teacher.schoolName" [profilePic]="teacher.profilePic" [position]="teacher.position"
+                    [content]="teacher.content" [minHeight]="'min-h-[400px]'">
+                </amsa-user-card>
+            </div>
+            <h1 class="text-center py-8">College course-н багш нар</h1>
+            <div class="flex flex-wrap justify-center space-x-3 space-y-3">
+                <amsa-user-card *ngFor="let teacher of college_teachers" [name]="teacher.name" [userId]="teacher.userId"
+                    [schoolName]="teacher.schoolName" [profilePic]="teacher.profilePic" [position]="teacher.position"
+                    [content]="teacher.content" [minHeight]="'min-h-[400px]'">
+                </amsa-user-card>
+            </div>
+            </p-tabpanel>
+        </p-tabpanels>
+    </p-tabs>
+</ng-container>

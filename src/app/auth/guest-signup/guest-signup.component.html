@@ -1,0 +1,48 @@
+<div fxLayoutAlign="center center" class="logo">
+  <img src="assets/images/AMSA_logo_1024.png" title="AMSA Logo">
+</div>
+
+<p-stepper [linear]="false">
+  <p-step>
+    <form [formGroup]="accountInfo" fxLayout="column">
+      <ng-template pStepLabel>{{(translationText$ | async).accountInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="email-input">Email</label>
+        <input id="email-input" pInputText placeholder="Email" formControlName="email" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="password-input">Password</label>
+        <input id="password-input" pInputText placeholder="Password" formControlName="password" required type="password" class="w-full">
+      </div>
+      <div>
+        <p-button [label]="(translationText$ | async).next" (onClick)="nextStep()"></p-button>
+      </div>
+    </form>
+  </p-step>
+
+  <p-step>
+    <form [formGroup]="personalInfo" fxLayout="column">
+      <ng-template pStepLabel>{{(translationText$ | async).personalInfo}}</ng-template>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="firstname-input">First Name</label>
+        <input id="firstname-input" pInputText placeholder="First Name" formControlName="firstname" required class="w-full">
+      </div>
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="lastname-input">Last Name</label>
+        <input id="lastname-input" pInputText placeholder="Last Name" formControlName="lastname" required class="w-full">
+      </div>
+
+      <div class="flex flex-col gap-3 mb-4">
+        <label for="birthDate-input">Birth Date</label>
+        <p-calendar id="birthDate-input" formControlName="birthDate" iconDisplay="input" class="w-full"></p-calendar>
+      </div>
+      <div class="flex gap-3 mt-4">
+        <p-button [label]="(translationText$ | async).back" (onClick)="previousStep()"></p-button>
+        <p-button [label]="(translationText$ | async).register" (onClick)="submitForm()" [disabled]="!(accountInfo.valid)"></p-button>
+      </div>
+    </form>
+  </p-step>
+
+
+</p-stepper>
+

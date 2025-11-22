@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://amsa.org/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow all other content
+Allow: /about
+Allow: /members
+Allow: /work/
+Allow: /post/
+Allow: /profile/
+
+# Crawl delay (optional)
+Crawl-delay: 1

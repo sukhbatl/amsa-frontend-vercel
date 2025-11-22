@@ -1,0 +1,74 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+  <div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
+    <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent" animationDuration="1s"></p-progressSpinner>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div>
+      <h2 class="text-2xl font-bold m-10">{{translationText.sb}}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <amsa-user-card 
+          *ngFor="let user of members?.sb"
+          [name]="user.User.firstName + ' ' + user.User.lastName"
+          [userId]="user.UserId"
+          [email]="user.User.email"
+          [profilePic]="backendUrl + user.User.profilePic"
+          [position]="user.name"
+          [schoolName]="user.User.schoolName">
+        </amsa-user-card>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-bold m-10">{{translationText.executiveMembers}}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <amsa-user-card 
+          *ngFor="let user of members?.current_tuz"
+          [name]="user.User.firstName + ' ' + user.User.lastName"
+          [userId]="user.UserId"
+          [email]="user.User.email"
+          [profilePic]="backendUrl + user.User.profilePic"
+          [position]="user.name"
+          [schoolName]="user.User.schoolName">
+        </amsa-user-card>
+      </div>
+    </div>
+
+    <!-- <div *ngFor="let users of members?.tuz | keyvalue" style="padding-top: 10px;">
+      <mat-expansion-panel margin>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3>{{translationText.executiveMembers}} - {{users.key}}</h3>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="flex flex-wrap">
+          <mat-card *ngFor="let user of users.value" class="max-w-72 min-w-64 justify-start min-h-72 m-3">
+            <mat-card-header class="justify-center">
+              <mat-card-title class="">
+                {{user.User.firstName + ' ' + user.User.lastName}}
+              </mat-card-title>
+              <mat-card-subtitle class="text-center">
+                {{user.name}}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <div class="object-cover w-40 h-40 ml-5 self-center my-2">
+              <img [src]="backendUrl + user.User.profilePic" [title]="user.User.firstName" class="rounded-full">
+            </div>
+            <mat-card-content class="justify-start">
+              <div *ngIf="user.User.schoolName" class="flex flex-wrap">
+                <mat-icon>school</mat-icon>
+                <div class="ml-1">{{user.User.schoolName}}</div>
+              </div>
+              <div class="flex">
+                <mat-icon>linkedin</mat-icon>
+                <a href="{{user.User.linkedin}}" class="ml-1">LinkedIn Profile</a>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-expansion-panel>
+    </div> -->
+  </div>
+</ng-container>

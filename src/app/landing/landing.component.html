@@ -1,0 +1,116 @@
+<ng-container *ngIf="(translationText$ | async) as translationText">
+  <div class="bg-white">
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="flex ml-4 pt-5 md:pt-20">
+        <h1 id="hero-heading" class="!text-md md:!text-6xl lg:!text-8xl !font-garamond">
+          We connect over 600 <br/> <u><em>Mongolian students</em></u> pursuing<br /> higher education <u><em>in the US</em></u>.
+        </h1>
+      </div>
+
+      <div class="flex ml-4">
+        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full transition-colors duration-200 mt-2 md:mt-10" routerLink="/about/contact" aria-label="Contact AMSA">
+          {{translationText.contact}}
+          <span style="color: white">
+            <fa-icon [icon]="['fas', 'arrow-right']" />
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="universities-section" aria-labelledby="universities-heading">
+      <h2 id="universities-heading" class="sr-only">Partner Universities</h2>
+      <div class="mt-20 overflow-hidden w-full bg-white py-4">
+        <div
+          class="flex gap-12 animate-scroll whitespace-nowrap"
+          [ngStyle]="{'animation-duration': duration + 's'}"
+          role="img"
+          aria-label="Logos of partner universities including Harvard, Stanford, MIT, and others"
+        >
+          <!-- Repeat logos 4 times for seamless looping on all screen sizes -->
+          <ng-container *ngFor="let i of [1,2,3,4]">
+            <ng-container *ngFor="let logo of logos">
+              <img
+                [src]="logo"
+                class="h-16 object-contain inline-block"
+                alt="University logo"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section !font-garamond" aria-labelledby="projects-heading">
+      <div class="my-20 mx-4">
+        <div class="flex flex-col">
+            
+          <h2 id="projects-heading" class="!text-xl md:!text-3xl !font-garamond !font-bold !uppercase">{{translationText.ourProjects}}</h2>
+            
+          <div class="flex flex-col justify-center mt-10 space-y-10 md:flex-row md:space-x-14 md:space-y-0" role="group" aria-labelledby="projects-heading">
+            <article class="bg-white md:w-1/3 h-48 md:h-96 shadow-2xl rounded-[50px] md:rounded-[80px] rounded-tl-none cursor-pointer hover:shadow-3xl transition-shadow duration-300" [routerLink]="['/work/agm']" aria-label="Learn about AGM - Annual General Meeting">
+              <div class="p-6 flex flex-col items-center justify-center text-center h-full">
+                <h3 class="text-orange-500 font-garamond text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{{translationText.agm}}</h3>
+                <p class="pt-1 md:pt-10 text-sm md:!text-l lg:!text-xl">{{translationText.landingAgm}}</p>
+              </div>
+            </article>
+            
+
+            <article class="bg-white md:w-1/3 h-48 md:h-96 shadow-2xl rounded-[50px] md:rounded-[80px] rounded-tl-none cursor-pointer hover:shadow-3xl transition-shadow duration-300" [routerLink]="['/work/buop']" aria-label="Learn about BUOP - Best University Opportunity Program">
+              <div class="p-6 flex flex-col items-center justify-center text-center h-full">
+                <h3 class="text-orange-500 font-garamond text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{{translationText.buop}}</h3>
+                <p class="pt-1 md:pt-10 text-sm md:!text-l lg:!text-xl">{{translationText.landingBuop}}</p>
+              </div>
+            </article>
+
+            <article class="bg-white md:w-1/3 h-48 md:h-96 shadow-2xl rounded-[50px] md:rounded-[80px] rounded-tl-none cursor-pointer hover:shadow-3xl transition-shadow duration-300" [routerLink]="['/work/podcast']" aria-label="Learn about Mentorship and Podcast programs">
+              <div class="p-6 flex flex-col items-center justify-center text-center h-full">
+                <h3 class="text-orange-500 text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{{translationText.mentorshipPodcast}}</h3>
+                <p class="pt-1 lg:pt-10 text-sm md:!text-l lg:!text-xl">{{translationText.landingMentorship}}</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="team-section" aria-labelledby="team-heading">
+      <div class="ml-4">
+        <h2 id="team-heading" class="!text-xl md:!text-3xl !font-garamond !font-bold uppercase">{{translationText.ourTeam}}</h2>
+        <p class="font-garamond text-sm md:text-xl">{{translationText.ourTeamDesc}}</p>
+
+        <div class="flex flex-wrap center justify-center mt-10" role="list" aria-labelledby="team-heading">
+          <div *ngFor="let user of homeData?.recentTuz" class="m-2" role="listitem">
+            <amsa-user-card
+              [name]="user.User.firstName + ' ' + user.User.lastName" [userId]="user.UserId"
+              [email]="user.User.email" 
+              [schoolName]="user.User.schoolName" [profilePic]="backendUrl + user.User.profilePic"
+              [position]="user.name">
+            </amsa-user-card>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="media-section" aria-labelledby="media-heading">
+      <div class="my-20 ml-4">
+        <h2 id="media-heading" class="!text-xl md:!text-3xl !font-garamond !font-bold">{{translationText.amsaSong}}</h2>
+        <div class="justify-center">
+          <iframe 
+            width="100%" 
+            height="166" 
+            scrolling="no" 
+            frameborder="no" 
+            allow="autoplay"
+            title="AMSA Song - SoundCloud Player"
+            aria-label="Listen to the AMSA song on SoundCloud"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/235405597&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+          </iframe>
+        </div>
+      </div>
+    </section>
+</div>  

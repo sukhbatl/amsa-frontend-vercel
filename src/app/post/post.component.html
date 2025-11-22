@@ -1,0 +1,68 @@
+<div *ngIf="isLoading" class="mat-spinner-center-page">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <div class="authorContent" fxLayout="column" fxLayoutAlign=" none">
+    <div *ngIf="userID === post.User.id" class="editPost">
+      <button mat-raised-button color="accent" routerLink="/profile/post/{{post.id}}">Edit</button>
+      <button mat-raised-button color="warn" (click)="deletePost()">Delete</button>
+    </div>
+
+    <mat-card>
+      <img [src]="backendUrl + post.picUrl" [title]="post.title" class="mainImage aligncenter">
+      <div class="title">{{post.title}}</div>
+      <div class="subtitle">{{post.subTitle}}</div>
+      <div [innerHTML]="post.content" class="content"></div>
+    </mat-card>
+
+    <!--About Author-->
+    <mat-card fxLayout="row" class="postAuthor" fxLayout.lt-md="column">
+      <div>
+        <img [src]="backendUrl + post.User.profilePic" [title]="post.title">
+      </div>
+      <div>
+        <mat-card-header>
+          <mat-card-subtitle>Written by</mat-card-subtitle>
+          <mat-card-title>{{post.User.firstName + ' ' + post.User.lastName}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>
+            {{post.User.bio}}
+          </p>
+        </mat-card-content>
+      </div>
+    </mat-card>
+
+    <!--Comment Section-->
+    <h3>{{(translationText$ | async).comments}}</h3>
+    <form fxLayout="column" [formGroup]="commentForm" #commentFormDirective="ngForm">
+      <mat-form-field>
+        <textarea matInput placeholder="Leave a comment" formControlName="content"></textarea>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between none">
+        <div></div>
+        <button mat-raised-button (click)="submitComment(commentFormDirective)">{{(translationText$ | async).post}}</button>
+      </div>
+    </form>
+
+    <div *ngFor="let comment of post.Comments" class="comment">
+      <div fxLayout="row">
+        <div><img [src]="backendUrl + comment.User.profilePic"></div>
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="commentHeader">
+            <div class="commentName">{{comment.User.firstName + ' ' + comment.User.lastName}}</div>
+            <div class="commentDate">{{comment.createdAt | timeAgo}}</div>
+          </div>
+          <div>
+            <div class="commentContent">{{comment.content}}</div>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+
+</div>

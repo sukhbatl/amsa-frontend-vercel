@@ -1,0 +1,18 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+.angular
+
+# IDE
+.vscode
+.idea
+
+# Git
+.git
+
+# Misc
+*.md
+package-lock.json
+
