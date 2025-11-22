@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
-    backendUrl: 'https://backend.amsa.mn/',
-    apiUrl: 'https://backend.amsa.mn/api',
+    backendUrl: 'https://amsa-backend-vercel.vercel.app/',
+    apiUrl: 'https://amsa-backend-vercel.vercel.app/api',
     apiTimeout: 30000, // 30 seconds
     retryAttempts: 2,
     retryDelay: 1000, // 1 second
