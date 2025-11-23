@@ -1,20 +1,17 @@
 <ng-container *ngIf="(translationText$ | async) as translationText">
   <div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
-    <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent" animationDuration="1s"></p-progressSpinner>
+    <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent"
+      animationDuration="1s"></p-progressSpinner>
   </div>
 
   <div *ngIf="!isLoading">
     <div>
       <h2 class="text-2xl font-bold m-10">{{translationText.sb}}</h2>
       <div class="flex flex-wrap justify-center gap-4">
-        <amsa-user-card 
-          *ngFor="let user of members?.sb"
-          [name]="user.User.firstName + ' ' + user.User.lastName"
-          [userId]="user.UserId"
-          [email]="user.User.email"
-          [profilePic]="backendUrl + user.User.profilePic"
-          [position]="user.name"
-          [schoolName]="user.User.schoolName">
+        <amsa-user-card *ngFor="let user of members?.sb" [name]="user.User.firstName + ' ' + user.User.lastName"
+          [userId]="user.UserId" [email]="user.User.email"
+          [profilePic]="user.User.profilePic?.startsWith('http') ? user.User.profilePic : backendUrl + user.User.profilePic"
+          [position]="user.name" [schoolName]="user.User.schoolName">
         </amsa-user-card>
       </div>
     </div>
@@ -22,14 +19,10 @@
     <div>
       <h2 class="text-2xl font-bold m-10">{{translationText.executiveMembers}}</h2>
       <div class="flex flex-wrap justify-center gap-4">
-        <amsa-user-card 
-          *ngFor="let user of members?.current_tuz"
-          [name]="user.User.firstName + ' ' + user.User.lastName"
-          [userId]="user.UserId"
-          [email]="user.User.email"
-          [profilePic]="backendUrl + user.User.profilePic"
-          [position]="user.name"
-          [schoolName]="user.User.schoolName">
+        <amsa-user-card *ngFor="let user of members?.current_tuz"
+          [name]="user.User.firstName + ' ' + user.User.lastName" [userId]="user.UserId" [email]="user.User.email"
+          [profilePic]="user.User.profilePic?.startsWith('http') ? user.User.profilePic : backendUrl + user.User.profilePic"
+          [position]="user.name" [schoolName]="user.User.schoolName">
         </amsa-user-card>
       </div>
     </div>

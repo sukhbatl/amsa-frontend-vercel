@@ -1,6 +1,10 @@
 {
   "name": "amsa-frontend",
   "version": "3.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukhbatl/amsa-frontend-vercel.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
