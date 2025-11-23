@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ProfileService} from './profile.service';
-import {ProfileModel, UpdatedProfileModel} from './profile.model';
-import {TitleService} from '../services/title.service';
-import {environment} from '../../environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from './profile.service';
+import { ProfileModel, UpdatedProfileModel } from './profile.model';
+import { TitleService } from '../services/title.service';
+import { environment } from '../../environments/environment';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import {FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {mimeType} from '../../validators/mime-type.validator';
-import {AuthService} from '../auth/auth.service';
-import {Subscription} from 'rxjs';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { mimeType } from '../../validators/mime-type.validator';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DatePickerModule } from 'primeng/datepicker';
@@ -23,34 +23,34 @@ import { CommonModule } from '@angular/common';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RouterLink } from '@angular/router';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    imports: [
-        ButtonModule,
-        InputTextModule,
-        DatePickerModule,
-        SelectModule,
-        ListboxModule,
-        CardModule,
-        DividerModule,
-        AccordionModule,
-        TabsModule,
-        ProgressSpinnerModule,
-        CommonModule,
-        ReactiveFormsModule,
-        FormsModule,
-        // CreatePostComponent,
-        // UserProfileComponent,
-        RouterLink,
-        TableModule,
-        ConfirmDialogModule,
-        ToastModule,
-    ],
-    providers: [MessageService]
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  imports: [
+    ButtonModule,
+    InputTextModule,
+    DatePickerModule,
+    SelectModule,
+    ListboxModule,
+    CardModule,
+    DividerModule,
+    AccordionModule,
+    TabsModule,
+    ProgressSpinnerModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    // CreatePostComponent,
+    // UserProfileComponent,
+    RouterLink,
+    TableModule,
+    ConfirmDialogModule,
+    ToastModule,
+  ],
+  providers: [MessageService]
 })
 
 export class ProfileComponent implements OnInit {
@@ -156,7 +156,7 @@ export class ProfileComponent implements OnInit {
 
   processFile(event: Event) {
     const file = (event.target as HTMLInputElement).files![0];
-    this.updatePictureForm?.patchValue({image: file});
+    this.updatePictureForm?.patchValue({ image: file });
     this.updatePictureForm?.get('image')?.updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
@@ -176,7 +176,7 @@ export class ProfileComponent implements OnInit {
         header: 'Success',
         icon: 'pi pi-check',
         rejectButtonStyleClass: 'p-button-text',
-        accept: () => {}
+        accept: () => { }
       });
     });
   }
@@ -237,7 +237,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.changeProfilePicture(this.updatePictureForm?.value.image).then((res) => {
       this.onImageUploadSuccess();
       if (this.profile) {
-        this.profile.profilePic = res['profilePic'];  
+        this.profile.profilePic = res['profilePic'];
       }
 
     }).catch(() => {
@@ -253,7 +253,7 @@ export class ProfileComponent implements OnInit {
       header: 'Success',
       icon: 'pi pi-check',
       rejectButtonStyleClass: 'p-button-text',
-      accept: () => {}
+      accept: () => { }
     });
   }
 
@@ -264,12 +264,24 @@ export class ProfileComponent implements OnInit {
       header: 'Error',
       icon: 'pi pi-exclamation-triangle',
       rejectButtonStyleClass: 'p-button-text',
-      accept: () => {}
+      accept: () => { }
     });
   }
 
+  getImageUrl(imagePath: string | undefined): string {
+    if (!imagePath) {
+      return '';
+    }
+    // If it's already a full URL (starts with http/https), return as-is
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+      return imagePath;
+    }
+    // Otherwise, prepend the backend URL
+    return this.backendUrl + imagePath;
+  }
+
   ngOnInit() {
-    
+
   }
 
 }
