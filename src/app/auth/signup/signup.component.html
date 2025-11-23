@@ -2,14 +2,14 @@
   <img class="w-1/4" src="assets/images/AMSA_logo_1024.png" title="AMSA Logo">
 </div>
 
-<div class="flex flex-row items-center">
-  <div class="block mat-elevation-z1" routerLink="member">
-    <button mat-button color="primary">{{(translationText$ | async).amsaMember}}</button>
-  </div>
-  <!-- <div class="block mat-elevation-z1" routerLink="guest">
-    <button mat-button color="accent">{{(translationText$ | async).guest}}</button>
-  </div> -->
+<div class="flex flex-row items-center justify-center gap-4">
+  <p-floatlabel>
+    <input pInputText id="member_signup" [(ngModel)]="memberValue" autocomplete="off" (click)="navigateToMember()"
+      class="cursor-pointer" readonly />
+    <label for="member_signup">{{ (translationText$ | async)?.amsaMember }}</label>
+  </p-floatlabel>
+  <!-- <p-floatlabel>
+    <input pInputText id="guest_signup" [(ngModel)]="guestValue" autocomplete="off" (click)="navigateToGuest()" class="cursor-pointer" readonly />
+    <label for="guest_signup">{{ (translationText$ | async)?.guest }}</label>
+  </p-floatlabel> -->
 </div>
-
-
-
