@@ -86,7 +86,7 @@ export class TopnavComponent implements OnInit, OnDestroy {
       {
         label: 'Register',
         icon: 'pi pi-user-plus',
-        command: () => this.navigateTo('/signup'),
+        command: () => this.navigateTo('/signup/member'),
         showWhen: () => !this.userIsAuthenticated
       },
       {
