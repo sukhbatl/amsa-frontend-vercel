@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {TitleService} from '../../services/title.service';
-import {AuthService} from '../auth.service';
-import {Subscription} from 'rxjs';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { TitleService } from '../../services/title.service';
+import { AuthService } from '../auth.service';
+import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { LanguageService } from '../../../../src/app/services/language.service';
 import { ButtonModule } from 'primeng/button';
@@ -15,29 +15,29 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    imports: [
-        CommonModule,
-        CardModule,
-        FormsModule,
-        ReactiveFormsModule,
-        InputTextModule,
-        ButtonModule,
-        RouterLink,
-    ]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  imports: [
+    CommonModule,
+    CardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    RouterLink,
+  ]
 })
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     email: ['', [
       Validators.required,
       Validators.email
-      ]
+    ]
     ],
     password: ['', [
       Validators.required,
       Validators.minLength(2)
-      ]
+    ]
     ]
   });;
   isLoading = false;
@@ -51,16 +51,13 @@ export class LoginComponent implements OnInit {
     private router: Router,
   ) {
     this.translationText$ = this.languageService.currentTranslationText;
-   }
+  }
 
   ngOnInit() {
     this.titleService.setTitle('Login');
     this.authService.getAuthStatusListener().subscribe(
       authStatus => {
         this.isLoading = false;
-        if (authStatus) {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Та амжилттай нэвтрэн орлоо', life: 5000 });
-        }
       }
     );
   }
@@ -72,7 +69,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).subscribe({
       next: () => {
         this.isLoading = false;
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successful!', life: 5000 });
         this.router.navigate(['/profile']);
       },
       error: (err) => {
