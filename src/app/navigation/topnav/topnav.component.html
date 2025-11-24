@@ -1,93 +1,90 @@
-<ng-container *ngIf="(translationText$ | async) as translationText">
+<ng-container *ngIf="translationText$ | async as translationText">
   <div class="fixed top-0 left-0 right-0 z-50 bg-white">
-    <p-menubar [styleClass]="'!font-garamond text-lg'" class="border-none bg-white text-black pt-5 shadow-sm px-4 py-10">
-    <ng-template pTemplate="start">
-      <div class="flex flex-row space-x-3 items-center">
-        <div class="place-content-center md:hidden">
-          <p-button 
-            icon="pi pi-bars" 
-            [text]="true" 
-            [rounded]="true"
-            (onClick)="onToggleSideNav()" 
-            aria-label="Toggle navigation menu"
-            class="p-button-sm text-black">
+    <p-menubar
+      [styleClass]="'!font-garamond text-lg'"
+      class="border-none bg-white text-black pt-5 shadow-sm px-4 py-10"
+    >
+      <ng-template pTemplate="start">
+        <div class="flex flex-row space-x-3 items-center">
+          <div class="place-content-center md:hidden">
+            <p-button
+              icon="pi pi-bars"
+              [text]="true"
+              [rounded]="true"
+              (onClick)="onToggleSideNav()"
+              aria-label="Toggle navigation menu"
+              class="p-button-sm text-black"
+            >
+            </p-button>
+          </div>
+          <a routerLink="/" aria-label="Go to AMSA homepage">
+            <img
+              class="rounded-full size-20 md:size-24 cursor-pointer p-4"
+              src="assets/images/AMSA_logo_1024.png"
+              alt="AMSA Logo"
+              title="AMSA Logo"
+            />
+          </a>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="end">
+        <div class="hidden md:flex items-center">
+          <p-button [text]="true" (onClick)="navigateTo('/about')" class="cursor-pointer text-black hover:text-primary">
+            {{ translationText.about }}
+          </p-button>
+          <p-button
+            [text]="true"
+            (onClick)="navigateTo('/members')"
+            class="cursor-pointer text-black hover:text-primary"
+          >
+            {{ translationText.team }}
+          </p-button>
+          <p-button
+            [text]="true"
+            #projectsBtn
+            (onClick)="projectsMenu.toggle($event)"
+            class="cursor-pointer text-black hover:text-primary"
+          >
+            {{ translationText.ourProjects }}
+            <i class="pi pi-chevron-down ml-1"></i>
+          </p-button>
+          <p-button
+            [text]="true"
+            (onClick)="navigateTo('/donation')"
+            class="cursor-pointer text-black hover:text-primary"
+          >
+            {{ translationText.donationBox }}
+          </p-button>
+          <p-button
+            [text]="true"
+            (onClick)="changeLanguage()"
+            class="cursor-pointer text-black hover:text-primary"
+            aria-label="Change language"
+          >
+            <img class="inline" src="{{ translationText.languageLogo }}" alt="Language flag" width="24" height="18" />
+            {{ languageText }}
+          </p-button>
+          <p-button
+            [text]="true"
+            #profileBtn
+            (onClick)="profileMenu.toggle($event)"
+            class="cursor-pointer text-black hover:text-primary"
+            aria-label="User account menu"
+          >
+            <i class="pi pi-user text-black hover:text-primary"></i>
           </p-button>
         </div>
-        <a routerLink="/" aria-label="Go to AMSA homepage">
-          <img 
-            class="rounded-full size-20 md:size-24 cursor-pointer p-4" 
-            src="assets/images/AMSA_logo_1024.png"
-            alt="AMSA Logo"
-            title="AMSA Logo"
-          >
-        </a>
-      </div>
-    </ng-template>
-    
-    <ng-template pTemplate="end">
-      <div class="flex items-center">
-        <p-button 
-          [text]="true" 
-          (onClick)="navigateTo('/about')" 
-          class="cursor-pointer text-black hover:text-primary">
-          {{translationText.about}}
-        </p-button>
-        <p-button 
-          [text]="true" 
-          (onClick)="navigateTo('/members')" 
-          class="cursor-pointer text-black hover:text-primary">
-          {{translationText.team}}
-        </p-button>
-        <p-button 
-          [text]="true" 
-          #projectsBtn
-          (onClick)="projectsMenu.toggle($event)" 
-          class="cursor-pointer text-black hover:text-primary">
-          {{translationText.ourProjects}}
-          <i class="pi pi-chevron-down ml-1"></i>
-        </p-button>
-        <p-button 
-          [text]="true" 
-          (onClick)="navigateTo('/donation')" 
-          class="cursor-pointer text-black hover:text-primary">
-          {{translationText.donationBox}}
-        </p-button>
-        <p-button 
-          [text]="true" 
-          (onClick)="changeLanguage()"
-          class="cursor-pointer text-black hover:text-primary" 
-          aria-label="Change language">
-          <img class="inline"
-            src={{translationText.languageLogo}}
-            alt="Language flag"
-            width="24"
-            height="18"
-          />
-          {{languageText}}
-        </p-button>
-        <p-button 
-          [text]="true" 
-          #profileBtn
-          (onClick)="profileMenu.toggle($event)" 
-          class="cursor-pointer text-black hover:text-primary" 
-          aria-label="User account menu">
-          <i class="pi pi-user text-black hover:text-primary"></i>
-        </p-button>
-      </div>
-    </ng-template>
-  </p-menubar>
+      </ng-template>
+    </p-menubar>
   </div>
-  <div
-    *ngIf="(title | async) !== 'Landing' && (title | async) !== 'Нүүр хуудас'"
-    class="justify-center bg-white">
+  <div *ngIf="(title | async) !== 'Landing' && (title | async) !== 'Нүүр хуудас'" class="justify-center bg-white">
     <div class="bg-white text-black font-garamond uppercase font-extrabold text-2xl my-3 text-center py-4">
-      {{title | async}}
+      {{ title | async }}
     </div>
   </div>
-
 
   <p-menu #profileMenu [model]="profileMenuItems" [popup]="true"></p-menu>
 
   <p-menu #projectsMenu [model]="projectsMenuItems" [popup]="true"></p-menu>
-
 </ng-container>
