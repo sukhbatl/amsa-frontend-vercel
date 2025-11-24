@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {BadgesService} from './badges.service';
-import {BadgeModel} from './badges.model';
-import {environment} from '../../environments/environment';
-import {TitleService} from '../services/title.service';
+import { BadgesService } from './badges.service';
+import { BadgeModel } from './badges.model';
+import { environment } from '../../environments/environment';
+import { TitleService } from '../services/title.service';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CardModule } from 'primeng/card';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-badges',
-    templateUrl: './badges.component.html',
-    imports: [
-        ProgressSpinnerModule,
-        CardModule,
-        CommonModule,
-    ]
+  selector: 'app-badges',
+  templateUrl: './badges.component.html',
+  imports: [ProgressSpinnerModule, CardModule, CommonModule],
 })
-
 export class BadgesComponent implements OnInit {
   isLoading = false;
   badges: BadgeModel[] = [];
@@ -26,22 +21,35 @@ export class BadgesComponent implements OnInit {
     private titleService: TitleService,
     private badgesService: BadgesService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.titleService.setTitle('List of All Badges');
     this.isLoading = true;
-    this.badgesService.getAllBadges().then(res => {
-      this.badges = res;
-      this.isLoading = false;
-    }).catch(() => {
+    this.badgesService
+      .getAllBadges()
+      .then(res => {
+        this.badges = res;
         this.isLoading = false;
-      }
-    );
+      })
+      .catch(() => {
+        this.isLoading = false;
+      });
   }
 
   navigateToBadge(id: number) {
     this.router.navigate(['badges', id]);
   }
 
+  getImageUrl(imagePath: string | undefined): string {
+    if (!imagePath) {
+      return '';
+    }
+    // If it's already a full URL (starts with http/https), return as-is
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+      return imagePath;
+    }
+    // Otherwise, prepend the backend URL
+    return this.backendUrl + imagePath;
+  }
 }

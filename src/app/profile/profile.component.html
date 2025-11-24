@@ -8,21 +8,33 @@
   <div class="flex flex-col md:flex-row gap-4">
     <p-card class="w-full md:w-64 flex-shrink-0">
       <div class="flex justify-center mb-4">
-        <img [src]="getImageUrl(profile.profilePic)" title="Profile Pic" class="rounded-full w-32 h-32 object-cover">
+        <img [src]="getImageUrl(profile.profilePic)" title="Profile Pic" class="rounded-full w-32 h-32 object-cover" />
       </div>
       <nav class="flex flex-col space-y-2">
-        <a class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
-          [ngClass]="userOptions == 'profile' ? 'bg-gray-200 font-bold': 'hover:bg-gray-100'"
-          (click)="navigateProfile('profile')">My Profile</a>
-        <a class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
-          [ngClass]="userOptions == 'updateInfo' ? 'bg-gray-200 font-bold': 'hover:bg-gray-100'"
-          (click)="navigateProfile('updateInfo')">Update Info</a>
-        <a class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
-          [ngClass]="userOptions == 'updatePhoto' ? 'bg-gray-200 font-bold': 'hover:bg-gray-100'"
-          (click)="navigateProfile('updatePhoto')">Update Photo</a>
-        <a class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
-          [ngClass]="userOptions == 'updatePassword' ? 'bg-gray-200 font-bold': 'hover:bg-gray-100'"
-          (click)="navigateProfile('updatePassword')">Change Password</a>
+        <a
+          class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
+          [ngClass]="userOptions == 'profile' ? 'bg-gray-200 font-bold' : 'hover:bg-gray-100'"
+          (click)="navigateProfile('profile')"
+          >My Profile</a
+        >
+        <a
+          class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
+          [ngClass]="userOptions == 'updateInfo' ? 'bg-gray-200 font-bold' : 'hover:bg-gray-100'"
+          (click)="navigateProfile('updateInfo')"
+          >Update Info</a
+        >
+        <a
+          class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
+          [ngClass]="userOptions == 'updatePhoto' ? 'bg-gray-200 font-bold' : 'hover:bg-gray-100'"
+          (click)="navigateProfile('updatePhoto')"
+          >Update Photo</a
+        >
+        <a
+          class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900"
+          [ngClass]="userOptions == 'updatePassword' ? 'bg-gray-200 font-bold' : 'hover:bg-gray-100'"
+          (click)="navigateProfile('updatePassword')"
+          >Change Password</a
+        >
         <!-- <a class="px-4 py-2 rounded cursor-pointer transition-colors text-gray-900 hover:bg-gray-100" routerLink="post" *ngIf="userLevel >= 1">Create New Post</a> -->
       </nav>
     </p-card>
@@ -52,17 +64,17 @@
                   <div class="py-2 font-semibold text-gray-900">ZIP Code:</div>
                 </div>
                 <div class="flex flex-col space-y-2">
-                  <div class="py-2 text-gray-900">{{profile.email}}</div>
-                  <div class="py-2 text-gray-900">{{profile.firstName}}</div>
-                  <div class="py-2 text-gray-900">{{profile.lastName}}</div>
-                  <div class="py-2 text-gray-900">{{profile.birthday | date}}</div>
-                  <div class="py-2 text-gray-900">{{profile.phoneNumber}}</div>
-                  <div class="py-2 text-gray-900">{{profile.personalEmail}}</div>
-                  <div class="py-2 text-gray-900">{{profile.address1}}</div>
-                  <div class="py-2 text-gray-900">{{profile.address2}}</div>
-                  <div class="py-2 text-gray-900">{{profile.city}}</div>
-                  <div class="py-2 text-gray-900">{{profile.state}}</div>
-                  <div class="py-2 text-gray-900">{{profile.zipCode}}</div>
+                  <div class="py-2 text-gray-900">{{ profile.email }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.firstName }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.lastName }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.birthday | date }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.phoneNumber }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.personalEmail }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.address1 }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.address2 }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.city }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.state }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.zipCode }}</div>
                 </div>
               </div>
             </p-tabpanel>
@@ -79,14 +91,14 @@
                   <div class="py-2 font-semibold text-gray-900">Second Major:</div>
                 </div>
                 <div class="flex flex-col space-y-2">
-                  <div class="py-2 text-gray-900">{{profile.email}}</div>
-                  <div class="py-2 text-gray-900">{{profile.schoolName}}</div>
-                  <div class="py-2 text-gray-900">{{profile.schoolYear}} year</div>
-                  <div class="py-2 text-gray-900">{{profile.graduationYear}}</div>
-                  <div class="py-2 text-gray-900">{{profile.schoolCity}}</div>
-                  <div class="py-2 text-gray-900">{{profile.schoolState}}</div>
-                  <div class="py-2 text-gray-900">{{profile.major}}</div>
-                  <div class="py-2 text-gray-900">{{profile.major2}}</div>
+                  <div class="py-2 text-gray-900">{{ profile.email }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.schoolName }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.schoolYear }} year</div>
+                  <div class="py-2 text-gray-900">{{ profile.graduationYear }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.schoolCity }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.schoolState }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.major }}</div>
+                  <div class="py-2 text-gray-900">{{ profile.major2 }}</div>
                 </div>
               </div>
             </p-tabpanel>
@@ -98,12 +110,21 @@
                   <div class="py-2 font-semibold text-gray-900">Linkedin:</div>
                 </div>
                 <div class="flex flex-col space-y-2">
-                  <div class="py-2"><a [href]="profile.facebook" target="_blank"
-                      class="text-blue-600 hover:underline">{{profile.facebook}}</a></div>
-                  <div class="py-2"><a [href]="profile.instagram" target="_blank"
-                      class="text-blue-600 hover:underline">{{profile.instagram}}</a></div>
-                  <div class="py-2"><a [href]="profile.linkedin" target="_blank"
-                      class="text-blue-600 hover:underline">{{profile.linkedin}}</a></div>
+                  <div class="py-2">
+                    <a [href]="profile.facebook" target="_blank" class="text-blue-600 hover:underline">{{
+                      profile.facebook
+                    }}</a>
+                  </div>
+                  <div class="py-2">
+                    <a [href]="profile.instagram" target="_blank" class="text-blue-600 hover:underline">{{
+                      profile.instagram
+                    }}</a>
+                  </div>
+                  <div class="py-2">
+                    <a [href]="profile.linkedin" target="_blank" class="text-blue-600 hover:underline">{{
+                      profile.linkedin
+                    }}</a>
+                  </div>
                 </div>
               </div>
             </p-tabpanel>
@@ -140,17 +161,17 @@
                   <form [formGroup]="personalInfo!" class="space-y-4">
                     <div class="p-field">
                       <label for="email" class="text-gray-900">Email</label>
-                      <input pInputText id="email" formControlName="email" required>
+                      <input pInputText id="email" formControlName="email" required />
                     </div>
 
                     <div class="p-field">
                       <label for="firstname" class="text-gray-900">First Name</label>
-                      <input pInputText id="firstname" formControlName="firstname" required>
+                      <input pInputText id="firstname" formControlName="firstname" required />
                     </div>
 
                     <div class="p-field">
                       <label for="lastname" class="text-gray-900">Last Name</label>
-                      <input pInputText id="lastname" formControlName="lastname" required>
+                      <input pInputText id="lastname" formControlName="lastname" required />
                     </div>
 
                     <div class="p-field">
@@ -160,44 +181,47 @@
 
                     <div class="p-field">
                       <label for="phone" class="text-gray-900">Phone</label>
-                      <input pInputText id="phone" formControlName="phone">
+                      <input pInputText id="phone" formControlName="phone" />
                     </div>
 
                     <div class="p-field">
                       <label for="personalEmail" class="text-gray-900">Personal Email</label>
-                      <input pInputText id="personalEmail" formControlName="personalEmail" required>
+                      <input pInputText id="personalEmail" formControlName="personalEmail" required />
                     </div>
 
-
                     <div formGroupName="address" class="flex flex-col">
-
                       <div class="p-field">
                         <label for="address1" class="text-gray-900">Address 1</label>
-                        <input pInputText id="address1" formControlName="address1" required>
+                        <input pInputText id="address1" formControlName="address1" required />
                       </div>
 
                       <div class="p-field">
                         <label for="address2" class="text-gray-900">Address 2</label>
-                        <input pInputText id="address2" formControlName="address2">
+                        <input pInputText id="address2" formControlName="address2" />
                       </div>
 
                       <div class="p-field">
                         <label for="city" class="text-gray-900">City</label>
-                        <input pInputText id="city" formControlName="city" required>
+                        <input pInputText id="city" formControlName="city" required />
                       </div>
 
                       <div class="p-field">
                         <label for="state" class="text-gray-900">State</label>
-                        <p-select id="state" formControlName="state" required [options]="states_us" optionLabel="value"
-                          optionValue="value">
+                        <p-select
+                          id="state"
+                          formControlName="state"
+                          required
+                          [options]="states_us"
+                          optionLabel="value"
+                          optionValue="value"
+                        >
                         </p-select>
                       </div>
 
                       <div class="p-field">
                         <label for="zip" class="text-gray-900">ZIP Code</label>
-                        <input pInputText id="zip" formControlName="zip" required>
+                        <input pInputText id="zip" formControlName="zip" required />
                       </div>
-
                     </div>
                   </form>
                 </div>
@@ -220,45 +244,51 @@
                 </div>
                 <div class="flex-1">
                   <form [formGroup]="schoolInfo!">
-                    <div class="py-2 mb-4 text-gray-900">{{profile.email}}</div>
+                    <div class="py-2 mb-4 text-gray-900">{{ profile.email }}</div>
 
                     <div class="p-field">
                       <label for="schoolName" class="text-gray-900">School Name</label>
-                      <input pInputText id="schoolName" formControlName="schoolName" required>
+                      <input pInputText id="schoolName" formControlName="schoolName" required />
                     </div>
 
                     <div class="p-field">
                       <label for="schoolYear" class="text-gray-900">School Year</label>
-                      <input pInputText id="schoolYear" formControlName="schoolYear" required> year(s)
+                      <input pInputText id="schoolYear" formControlName="schoolYear" required /> year(s)
                     </div>
 
                     <div class="p-field">
                       <label for="graduationYear" class="text-gray-900">Graduation Year</label>
-                      <input pInputText id="graduationYear" formControlName="graduationYear" required>
+                      <input pInputText id="graduationYear" formControlName="graduationYear" required />
                     </div>
 
                     <div formGroupName="address" class="flex flex-col">
                       <div class="p-field">
                         <label for="schoolCity" class="text-gray-900">City</label>
-                        <input pInputText id="schoolCity" formControlName="city" required>
+                        <input pInputText id="schoolCity" formControlName="city" required />
                       </div>
 
                       <div class="p-field">
                         <label for="schoolState" class="text-gray-900">State</label>
-                        <p-select id="schoolState" formControlName="state" required [options]="states_us"
-                          optionLabel="value" optionValue="value">
+                        <p-select
+                          id="schoolState"
+                          formControlName="state"
+                          required
+                          [options]="states_us"
+                          optionLabel="value"
+                          optionValue="value"
+                        >
                         </p-select>
                       </div>
                     </div>
 
                     <div class="p-field">
                       <label for="major" class="text-gray-900">Major</label>
-                      <input pInputText id="major" formControlName="major" required>
+                      <input pInputText id="major" formControlName="major" required />
                     </div>
 
                     <div class="p-field">
                       <label for="doubleMajor" class="text-gray-900">Second Major</label>
-                      <input pInputText id="doubleMajor" formControlName="doubleMajor" required>
+                      <input pInputText id="doubleMajor" formControlName="doubleMajor" required />
                     </div>
                   </form>
                 </div>
@@ -278,17 +308,17 @@
                   <form [formGroup]="socialInfo!" class="space-y-4">
                     <div class="p-field">
                       <label for="facebook" class="text-gray-900">Facebook</label>
-                      <input pInputText id="facebook" formControlName="facebook" required>
+                      <input pInputText id="facebook" formControlName="facebook" required />
                     </div>
 
                     <div class="p-field">
                       <label for="instagram" class="text-gray-900">Instagram</label>
-                      <input pInputText id="instagram" formControlName="instagram" required>
+                      <input pInputText id="instagram" formControlName="instagram" required />
                     </div>
 
                     <div class="p-field">
                       <label for="linkedin" class="text-gray-900">LinkedIn</label>
-                      <input pInputText id="linkedin" formControlName="linkedin" required>
+                      <input pInputText id="linkedin" formControlName="linkedin" required />
                     </div>
                   </form>
                 </div>
@@ -312,7 +342,7 @@
                 <div class="flex-1">
                   <div class="py-2">
                     <form [formGroup]="updatePictureForm!">
-                      <input [hidden]="true" #imageInput type="file" accept="image/*" (change)="processFile($event)">
+                      <input [hidden]="true" #imageInput type="file" accept="image/*" (change)="processFile($event)" />
                       <button pButton (click)="imageInput.click()">Select File</button>
                     </form>
                   </div>
@@ -321,10 +351,17 @@
               </div>
               <div class="previewProfileImageContainer justify-center">
                 <img
-                  *ngIf="profilePicturePreviewUrl !== '' && profilePicturePreviewUrl && updatePictureForm!.get('image')!.valid"
-                  [src]="profilePicturePreviewUrl" title="Preview Image" class="previewProfileImage">
+                  *ngIf="
+                    profilePicturePreviewUrl !== '' &&
+                    profilePicturePreviewUrl &&
+                    updatePictureForm!.get('image')!.valid
+                  "
+                  [src]="profilePicturePreviewUrl"
+                  title="Preview Image"
+                  class="previewProfileImage"
+                />
               </div>
-              <br>
+              <br />
               <div class="align-middle">
                 <button pButton (click)="updateProfilePic()" [disabled]="!updatePictureForm!.valid">Update</button>
               </div>
@@ -342,16 +379,19 @@
               <form [formGroup]="changePasswordForm!" class="flex flex-col space-y-4 max-w-md">
                 <div class="p-field">
                   <label for="currentPassword" class="text-gray-900">Current Password</label>
-                  <input pInputText id="currentPassword" placeholder="Current Password" type="password"
-                    formControlName="old">
+                  <input
+                    pInputText
+                    id="currentPassword"
+                    placeholder="Current Password"
+                    type="password"
+                    formControlName="old"
+                  />
                 </div>
                 <div class="p-field">
                   <label for="newPassword" class="text-gray-900">New Password</label>
-                  <input pInputText id="newPassword" placeholder="New password" type="password" formControlName="new">
+                  <input pInputText id="newPassword" placeholder="New password" type="password" formControlName="new" />
                 </div>
-                <button pButton (click)="updatePassword()">
-                  Submit
-                </button>
+                <button pButton (click)="updatePassword()">Submit</button>
               </form>
             </p-tabpanel>
           </p-tabpanels>
@@ -367,17 +407,23 @@
         <p-accordion-header>Badges</p-accordion-header>
         <p-accordion-content>
           <div class="flex flex-row flex-wrap gap-4">
-            <div *ngFor="let badge of profile.Badges" class="cursor-pointer hover:opacity-80 transition-opacity"
-              routerLink="/badges/{{badge.id}}">
-              <img [src]="backendUrl + badge.picUrl" [title]="badge.name" [alt]="badge.name"
-                class="w-24 h-24 object-cover rounded">
+            <div
+              *ngFor="let badge of profile.Badges"
+              class="cursor-pointer hover:opacity-80 transition-opacity"
+              routerLink="/badges/{{ badge.id }}"
+            >
+              <img
+                [src]="getImageUrl(badge.picUrl)"
+                [title]="badge.name"
+                [alt]="badge.name"
+                class="w-24 h-24 object-cover rounded"
+              />
             </div>
           </div>
         </p-accordion-content>
       </p-accordion-panel>
     </p-accordion>
   </div>
-
 </div>
 
 <p-confirmDialog></p-confirmDialog>

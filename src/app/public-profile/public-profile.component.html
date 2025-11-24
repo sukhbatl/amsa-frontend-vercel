@@ -1,5 +1,10 @@
 <div *ngIf="isLoading" class="flex justify-center items-center min-h-screen">
-  <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent" animationDuration="1s"></p-progressSpinner>
+  <p-progressSpinner
+    [style]="{ width: '50px', height: '50px' }"
+    strokeWidth="4"
+    fill="transparent"
+    animationDuration="1s"
+  ></p-progressSpinner>
 </div>
 
 <div *ngIf="!isLoading && profile" class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
@@ -10,11 +15,12 @@
         <!-- Profile Picture -->
         <div class="flex-shrink-0">
           <div class="relative">
-            <img 
-              [src]="backendUrl + profile.profilePic" 
+            <img
+              [src]="backendUrl + profile.profilePic"
               [alt]="profile.firstName + ' ' + profile.lastName"
               (error)="onImageError($event)"
-              class="w-48 h-48 rounded-full object-cover shadow-xl ring-4 ring-white dark:ring-gray-700">
+              class="w-48 h-48 rounded-full object-cover shadow-xl ring-4 ring-white dark:ring-gray-700"
+            />
             <div class="absolute -bottom-2 -right-2 bg-indigo-600 text-white rounded-full p-3 shadow-lg">
               <i class="pi pi-user text-2xl"></i>
             </div>
@@ -24,45 +30,60 @@
         <!-- Profile Info -->
         <div class="flex-1 text-center md:text-left">
           <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            {{profile.firstName}} {{profile.lastName}}
+            {{ profile.firstName }} {{ profile.lastName }}
           </h1>
-          
+
           <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
-            <span *ngIf="profile.schoolName" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200">
+            <span
+              *ngIf="profile.schoolName"
+              class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200"
+            >
               <i class="pi pi-building mr-2"></i>
-              {{profile.schoolName}}
+              {{ profile.schoolName }}
             </span>
-            <span *ngIf="profile.major" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+            <span
+              *ngIf="profile.major"
+              class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
+            >
               <i class="pi pi-book mr-2"></i>
-              {{profile.major}}
+              {{ profile.major }}
             </span>
-            <span *ngIf="profile.graduationYear" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+            <span
+              *ngIf="profile.graduationYear"
+              class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+            >
               <i class="pi pi-calendar mr-2"></i>
-              Class of {{profile.graduationYear}}
+              Class of {{ profile.graduationYear }}
             </span>
           </div>
 
           <!-- Social Links -->
           <div class="flex justify-center md:justify-start gap-4 mb-6">
-            <a *ngIf="profile.linkedin" 
-               [href]="profile.linkedin" 
-               target="_blank"
-               class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 hover:scale-110 shadow-lg"
-               [attr.aria-label]="'LinkedIn profile of ' + profile.firstName + ' ' + profile.lastName">
+            <a
+              *ngIf="profile.linkedin"
+              [href]="profile.linkedin"
+              target="_blank"
+              class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 hover:scale-110 shadow-lg"
+              [attr.aria-label]="'LinkedIn profile of ' + profile.firstName + ' ' + profile.lastName"
+            >
               <i class="pi pi-linkedin text-xl"></i>
             </a>
-            <a *ngIf="profile.facebook" 
-               [href]="profile.facebook" 
-               target="_blank"
-               class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 hover:scale-110 shadow-lg"
-               [attr.aria-label]="'Facebook profile of ' + profile.firstName + ' ' + profile.lastName">
+            <a
+              *ngIf="profile.facebook"
+              [href]="profile.facebook"
+              target="_blank"
+              class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 hover:scale-110 shadow-lg"
+              [attr.aria-label]="'Facebook profile of ' + profile.firstName + ' ' + profile.lastName"
+            >
               <i class="pi pi-facebook text-xl"></i>
             </a>
-            <a *ngIf="profile.instagram" 
-               [href]="profile.instagram" 
-               target="_blank"
-               class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white transition-all duration-300 hover:scale-110 shadow-lg"
-               [attr.aria-label]="'Instagram profile of ' + profile.firstName + ' ' + profile.lastName">
+            <a
+              *ngIf="profile.instagram"
+              [href]="profile.instagram"
+              target="_blank"
+              class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white transition-all duration-300 hover:scale-110 shadow-lg"
+              [attr.aria-label]="'Instagram profile of ' + profile.firstName + ' ' + profile.lastName"
+            >
               <i class="pi pi-instagram text-xl"></i>
             </a>
           </div>
@@ -71,13 +92,15 @@
           <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
             <p class="text-sm text-blue-800 dark:text-blue-200 mb-3">
               <i class="pi pi-info-circle mr-2"></i>
-              Want to see more details and connect with {{profile.firstName}}?
+              Want to see more details and connect with {{ profile.firstName }}?
             </p>
-            <a routerLink="/login" 
-               pButton 
-               label="Sign in to view full profile"
-               icon="pi pi-sign-in"
-               class="p-button-raised p-button-primary !bg-indigo-600 hover:!bg-indigo-700 !border-0 !text-sm"></a>
+            <a
+              routerLink="/login"
+              pButton
+              label="Sign in to view full profile"
+              icon="pi pi-sign-in"
+              class="p-button-raised p-button-primary !bg-indigo-600 hover:!bg-indigo-700 !border-0 !text-sm"
+            ></a>
           </div>
         </div>
       </div>
@@ -98,11 +121,9 @@
           </ng-template>
           <div class="p-6 pt-4">
             <p *ngIf="profile.bio" class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg whitespace-pre-line">
-              {{profile.bio}}
+              {{ profile.bio }}
             </p>
-            <p *ngIf="!profile.bio" class="text-gray-500 dark:text-gray-400 italic">
-              No bio available.
-            </p>
+            <p *ngIf="!profile.bio" class="text-gray-500 dark:text-gray-400 italic">No bio available.</p>
           </div>
         </p-card>
       </div>
@@ -123,15 +144,15 @@
               <i class="pi pi-building mr-3 mt-1 text-indigo-600"></i>
               <div>
                 <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">School</p>
-                <p class="text-gray-900 dark:text-white font-medium">{{profile.schoolName}}</p>
+                <p class="text-gray-900 dark:text-white font-medium">{{ profile.schoolName }}</p>
               </div>
             </div>
-            
+
             <div *ngIf="profile.major" class="flex items-start">
               <i class="pi pi-book mr-3 mt-1 text-purple-600"></i>
               <div>
                 <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Major</p>
-                <p class="text-gray-900 dark:text-white font-medium">{{profile.major}}</p>
+                <p class="text-gray-900 dark:text-white font-medium">{{ profile.major }}</p>
               </div>
             </div>
 
@@ -139,7 +160,7 @@
               <i class="pi pi-book mr-3 mt-1 text-purple-600"></i>
               <div>
                 <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Second Major</p>
-                <p class="text-gray-900 dark:text-white font-medium">{{profile.major2}}</p>
+                <p class="text-gray-900 dark:text-white font-medium">{{ profile.major2 }}</p>
               </div>
             </div>
 
@@ -147,7 +168,7 @@
               <i class="pi pi-star mr-3 mt-1 text-yellow-600"></i>
               <div>
                 <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Degree Level</p>
-                <p class="text-gray-900 dark:text-white font-medium">{{profile.degreeLevel}}</p>
+                <p class="text-gray-900 dark:text-white font-medium">{{ profile.degreeLevel }}</p>
               </div>
             </div>
 
@@ -155,7 +176,7 @@
               <i class="pi pi-calendar mr-3 mt-1 text-green-600"></i>
               <div>
                 <p class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">Graduation Year</p>
-                <p class="text-gray-900 dark:text-white font-medium">{{profile.graduationYear}}</p>
+                <p class="text-gray-900 dark:text-white font-medium">{{ profile.graduationYear }}</p>
               </div>
             </div>
           </div>
@@ -176,18 +197,25 @@
         </ng-template>
         <div class="p-6 pt-4">
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            <div *ngFor="let badge of profile.Badges" 
-                 (click)="onBadgeClick(badge.id)"
-                 class="flex flex-col items-center cursor-pointer group transition-all duration-300 hover:scale-110">
+            <div
+              *ngFor="let badge of profile.Badges"
+              (click)="onBadgeClick(badge.id)"
+              class="flex flex-col items-center cursor-pointer group transition-all duration-300 hover:scale-110"
+            >
               <div class="relative">
-                <img 
-                  [src]="backendUrl + badge.picUrl" 
+                <img
+                  [src]="getImageUrl(badge.picUrl)"
                   [alt]="badge.name"
                   [title]="badge.name"
-                  class="w-20 h-20 object-contain rounded-full bg-white dark:bg-gray-800 p-2 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                <div class="absolute inset-0 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                  class="w-20 h-20 object-contain rounded-full bg-white dark:bg-gray-800 p-2 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                />
+                <div
+                  class="absolute inset-0 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                ></div>
               </div>
-              <p class="text-xs text-center mt-2 text-gray-700 dark:text-gray-300 font-medium line-clamp-2">{{badge.name}}</p>
+              <p class="text-xs text-center mt-2 text-gray-700 dark:text-gray-300 font-medium line-clamp-2">
+                {{ badge.name }}
+              </p>
             </div>
           </div>
         </div>
@@ -207,42 +235,60 @@
         </ng-template>
         <div class="p-6 pt-4">
           <p class="text-gray-600 dark:text-gray-400 mb-6">
-            Read more about {{profile.firstName}}'s work and insights:
+            Read more about {{ profile.firstName }}'s work and insights:
           </p>
           <div class="space-y-4">
-            <a href="https://markets.chroniclejournal.com/chroniclejournal/article/accwirecq-2025-10-16-sukhbat-lkhagvadorj-why-the-best-infrastructure-i-ever-built-wasnt-for-a-fortune-500-company-but-for-students" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="flex items-start p-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 hover:from-blue-100 hover:to-indigo-100 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 transition-all duration-300 border border-blue-200 dark:border-blue-800 hover:shadow-lg group">
-              <i class="pi pi-external-link text-indigo-600 dark:text-indigo-400 mr-3 mt-1 group-hover:scale-110 transition-transform"></i>
+            <a
+              href="https://markets.chroniclejournal.com/chroniclejournal/article/accwirecq-2025-10-16-sukhbat-lkhagvadorj-why-the-best-infrastructure-i-ever-built-wasnt-for-a-fortune-500-company-but-for-students"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-start p-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 hover:from-blue-100 hover:to-indigo-100 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 transition-all duration-300 border border-blue-200 dark:border-blue-800 hover:shadow-lg group"
+            >
+              <i
+                class="pi pi-external-link text-indigo-600 dark:text-indigo-400 mr-3 mt-1 group-hover:scale-110 transition-transform"
+              ></i>
               <div class="flex-1">
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3
+                  class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                >
                   Why the Best Infrastructure I Ever Built Wasn't for a Fortune 500 Company, But for Students
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">Chronicle Journal Markets</p>
               </div>
             </a>
 
-            <a href="https://www.netnewsledger.com/2025/11/12/according-to-data-engineer-sukhbat-lkhagvadorj-your-companys-greatest-untapped-resource-is-its-community-api/" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="flex items-start p-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 hover:from-purple-100 hover:to-pink-100 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 border border-purple-200 dark:border-purple-800 hover:shadow-lg group">
-              <i class="pi pi-external-link text-purple-600 dark:text-purple-400 mr-3 mt-1 group-hover:scale-110 transition-transform"></i>
+            <a
+              href="https://www.netnewsledger.com/2025/11/12/according-to-data-engineer-sukhbat-lkhagvadorj-your-companys-greatest-untapped-resource-is-its-community-api/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-start p-4 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 hover:from-purple-100 hover:to-pink-100 dark:hover:from-purple-900/30 dark:hover:to-pink-900/30 transition-all duration-300 border border-purple-200 dark:border-purple-800 hover:shadow-lg group"
+            >
+              <i
+                class="pi pi-external-link text-purple-600 dark:text-purple-400 mr-3 mt-1 group-hover:scale-110 transition-transform"
+              ></i>
               <div class="flex-1">
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                <h3
+                  class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors"
+                >
                   Your Company's Greatest Untapped Resource is its Community API
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">Net News Ledger</p>
               </div>
             </a>
 
-            <a href="https://www.24-7pressrelease.com/press-release/528465/bridging-data-and-humanity-sukhbat-lkhagvadorj-on-why-technology-needs-cultural-intelligence" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="flex items-start p-4 rounded-xl bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 hover:from-green-100 hover:to-teal-100 dark:hover:from-green-900/30 dark:hover:to-teal-900/30 transition-all duration-300 border border-green-200 dark:border-green-800 hover:shadow-lg group">
-              <i class="pi pi-external-link text-green-600 dark:text-green-400 mr-3 mt-1 group-hover:scale-110 transition-transform"></i>
+            <a
+              href="https://www.24-7pressrelease.com/press-release/528465/bridging-data-and-humanity-sukhbat-lkhagvadorj-on-why-technology-needs-cultural-intelligence"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-start p-4 rounded-xl bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 hover:from-green-100 hover:to-teal-100 dark:hover:from-green-900/30 dark:hover:to-teal-900/30 transition-all duration-300 border border-green-200 dark:border-green-800 hover:shadow-lg group"
+            >
+              <i
+                class="pi pi-external-link text-green-600 dark:text-green-400 mr-3 mt-1 group-hover:scale-110 transition-transform"
+              ></i>
               <div class="flex-1">
-                <h3 class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                <h3
+                  class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors"
+                >
                   Bridging Data and Humanity: Why Technology Needs Cultural Intelligence
                 </h3>
                 <p class="text-sm text-gray-600 dark:text-gray-400">24-7 Press Release</p>
@@ -254,23 +300,29 @@
     </div>
 
     <!-- Call to Action -->
-    <div class="mt-8 text-center bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] p-8">
+    <div
+      class="mt-8 text-center bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] p-8"
+    >
       <h3 class="text-2xl font-bold text-white mb-4">Join AMSA Today!</h3>
       <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">
-        Connect with talented Mongolian students and professionals around the world. 
-        Create your profile, share your achievements, and build lasting relationships.
+        Connect with talented Mongolian students and professionals around the world. Create your profile, share your
+        achievements, and build lasting relationships.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a routerLink="/signup" 
-           pButton 
-           label="Create Account"
-           icon="pi pi-user-plus"
-           class="p-button-raised !bg-white !text-indigo-600 hover:!bg-gray-100 !border-0 !font-semibold"></a>
-        <a routerLink="/login" 
-           pButton 
-           label="Sign In"
-           icon="pi pi-sign-in"
-           class="p-button-raised p-button-outlined !border-2 !border-white !text-white hover:!bg-white hover:!text-indigo-600 !font-semibold"></a>
+        <a
+          routerLink="/signup"
+          pButton
+          label="Create Account"
+          icon="pi pi-user-plus"
+          class="p-button-raised !bg-white !text-indigo-600 hover:!bg-gray-100 !border-0 !font-semibold"
+        ></a>
+        <a
+          routerLink="/login"
+          pButton
+          label="Sign In"
+          icon="pi pi-sign-in"
+          class="p-button-raised p-button-outlined !border-2 !border-white !text-white hover:!bg-white hover:!text-indigo-600 !font-semibold"
+        ></a>
       </div>
     </div>
   </div>
@@ -280,10 +332,11 @@
   <i class="pi pi-user-minus text-6xl text-gray-400 mb-4"></i>
   <h2 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">Profile Not Found</h2>
   <p class="text-gray-500 dark:text-gray-400 mb-6">The member profile you're looking for doesn't exist.</p>
-  <a routerLink="/members" 
-     pButton 
-     label="View All Members"
-     icon="pi pi-users"
-     class="p-button-raised p-button-primary"></a>
+  <a
+    routerLink="/members"
+    pButton
+    label="View All Members"
+    icon="pi pi-users"
+    class="p-button-raised p-button-primary"
+  ></a>
 </div>
-
