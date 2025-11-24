@@ -114,7 +114,7 @@
         <p class="font-garamond text-sm md:text-xl">{{ translationText.ourTeamDesc }}</p>
 
         <div
-          class="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 md:gap-4 mt-10 px-2"
+          class="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-8 md:gap-4 mt-10"
           role="list"
           aria-labelledby="team-heading"
         >
@@ -125,7 +125,7 @@
               [email]="user.User.email"
               [schoolName]="user.User.schoolName"
               [profilePic]="
-                user.User.profilePic?.startsWith('http') ? user.User.profilePic : backendUrl + user.User.profilePic
+                user.User.profilePic.startsWith('http') ? user.User.profilePic : backendUrl + user.User.profilePic
               "
               [position]="user.name"
             >

@@ -1,38 +1,50 @@
 <p-card
   #cardRef
-  [class]="'!rounded-3xl cursor-pointer transition-all duration-300 !shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] hover:!shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25),0_10px_20px_-5px_rgba(0,0,0,0.08)] ' + (userIsAuthenticated ? 'w-56 h-64 md:w-72 md:h-82' : 'size-56 md:size-74') + ' ' + minHeight"
+  [class]="
+    '!rounded-3xl cursor-pointer transition-all duration-300 !shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] hover:!shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25),0_10px_20px_-5px_rgba(0,0,0,0.08)] ' +
+    (userIsAuthenticated ? 'w-36 h-44 md:w-72 md:h-82' : 'size-36 md:size-74') +
+    ' ' +
+    minHeight
+  "
   (click)="navigateToProfile()"
-  [attr.aria-label]="'View profile of ' + name + ', ' + position.replace(' of of ', ' of ')">
-
+  [attr.aria-label]="'View profile of ' + name + ', ' + position.replace(' of of ', ' of ')"
+>
   <ng-template pTemplate="header">
-    <div class="self-center p-4 pb-3">
-      <h3 class="text-center !text-sm md:!text-xl font-bold mb-1 line-clamp-1 truncate">
-        {{name}}
+    <div class="self-center p-1.5 md:p-4 pb-1.5 md:pb-3">
+      <h3 class="text-center !text-[10px] md:!text-xl font-bold mb-0.5 md:mb-1 line-clamp-1 truncate">
+        {{ name }}
       </h3>
-      <p class="text-center font-bold !text-xs md:!text-sm text-gray-600">
-        {{position}}
+      <p class="text-center font-bold !text-[8px] md:!text-sm text-gray-600">
+        {{ position }}
       </p>
     </div>
   </ng-template>
 
-  <div class="flex justify-center items-center mb-2">
-    <div class="size-24 md:size-36 flex items-center justify-center">
-      <img [src]="profilePic" [title]="name" [alt]="name + ', ' + position" class="w-full h-full object-cover rounded-full" loading="lazy" (error)="onImageError($event)">
+  <div class="flex justify-center items-center mb-0.5 md:mb-2">
+    <div class="size-14 md:size-36 flex items-center justify-center">
+      <img
+        [src]="profilePic"
+        [title]="name"
+        [alt]="name + ', ' + position"
+        class="w-full h-full object-cover rounded-full"
+        loading="lazy"
+        (error)="onImageError($event)"
+      />
     </div>
   </div>
 
-  <div class="justify-start px-4 pt-2 pb-6">
-    <div *ngIf="userIsAuthenticated" class="flex justify-center mb-1">
-      <i class="pi pi-envelope text-xs md:text-2xl !w-6 mr-1 !align-middle"></i>
-      <div class="truncate">{{email}}</div>
+  <div class="justify-start px-1.5 md:px-4 pt-0.5 md:pt-2 pb-2 md:pb-6">
+    <div *ngIf="userIsAuthenticated" class="flex justify-center mb-0.5">
+      <i class="pi pi-envelope text-[8px] md:text-2xl !w-4 mr-0.5 !align-middle"></i>
+      <div class="truncate text-[8px] md:text-base">{{ email }}</div>
     </div>
-    <div *ngIf="schoolName" class="flex justify-center mb-1">
-      <i class="pi pi-building text-sm md:text-2xl mr-1 !align-middle"></i>
-      <div class="truncate">{{schoolName}}</div>
+    <div *ngIf="schoolName" class="flex justify-center mb-0.5">
+      <i class="pi pi-building text-[8px] md:text-2xl mr-0.5 md:mr-1 !align-middle"></i>
+      <div class="truncate text-[8px] md:text-base">{{ schoolName }}</div>
     </div>
     <div *ngIf="content" class="flex justify-start">
-      <i class="pi pi-star mr-1"></i>
-      {{content}}
+      <i class="pi pi-star mr-0.5 text-[8px] md:text-base"></i>
+      <span class="text-[8px] md:text-base">{{ content }}</span>
     </div>
   </div>
 </p-card>

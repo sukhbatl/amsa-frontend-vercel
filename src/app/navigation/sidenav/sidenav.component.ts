@@ -20,10 +20,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   themeText: string = '';
   theme: Observable<string> | undefined;
   themes = themes;
-  isExpanded = true;
   showSubmenu: boolean = false;
-  isShowing = false;
-  showSubSubMenu: boolean = false;
   userIsAuthenticated = false;
   private authStateListenerSubs?: Subscription;
   @Output() closeSidenav = new EventEmitter<void>();
@@ -50,6 +47,12 @@ export class SidenavComponent implements OnInit, OnDestroy {
   navigateTo(route: string) {
     this.router.navigate([route]);
     this.onClose();
+  }
+
+  onLogout() {
+    this.authService.logout();
+    this.onClose();
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {

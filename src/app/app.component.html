@@ -1,33 +1,57 @@
-<div [ngClass]="{
-  'yellow-dark-theme': (theme | async) === 'yellow-dark-theme',
-  'unicorn-dark-theme': (theme | async) === 'unicorn-dark-theme'
-}">
+<div
+  [ngClass]="{
+    'yellow-dark-theme': (theme | async) === 'yellow-dark-theme',
+    'unicorn-dark-theme': (theme | async) === 'unicorn-dark-theme',
+  }"
+>
+  <p-toast></p-toast>
 
-<p-toast></p-toast>
+  <!-- Skip navigation links for accessibility -->
+  <a
+    href="#main-content"
+    class="absolute -top-10 left-2 bg-primary text-white px-4 py-2 rounded focus:top-2 z-[1000] font-bold transition-all"
+    >Skip to main content</a
+  >
+  <a
+    href="#navigation"
+    class="absolute -top-10 left-2 bg-primary text-white px-4 py-2 rounded focus:top-2 z-[1000] font-bold transition-all"
+    >Skip to navigation</a
+  >
 
-<!-- Skip navigation links for accessibility -->
-<a href="#main-content" class="absolute -top-10 left-2 bg-primary text-white px-4 py-2 rounded focus:top-2 z-[1000] font-bold transition-all">Skip to main content</a>
-<a href="#navigation" class="absolute -top-10 left-2 bg-primary text-white px-4 py-2 rounded focus:top-2 z-[1000] font-bold transition-all">Skip to navigation</a>
+  <div class="bg-white">
+    <p-drawer
+      [(visible)]="sidebarVisible"
+      [modal]="isMobile"
+      [dismissible]="true"
+      [showCloseIcon]="false"
+      styleClass="custom-drawer"
+    >
+      <app-sidenav (closeSidenav)="sidebarVisible = false"></app-sidenav>
+    </p-drawer>
 
-<div class="bg-white">
-  <p-drawer [(visible)]="sidebarVisible" [modal]="isMobile" [dismissible]="true" [showCloseIcon]="true" styleClass="custom-drawer">
-    <app-sidenav (closeSidenav)="sidebarVisible = false"></app-sidenav>
-  </p-drawer>
-
-  <div class="main-content" (window:resize)="onResize()">
-    <header role="banner">
-      <app-topnav (sidenavToggle)="sidebarVisible = true" id="navigation"></app-topnav>
-    </header>
-    <main id="main-content" role="main" class="pt-28 px-6">
-      <div [hidden]="loadingRouteConfig" [ngClass]="isMobile ? 'main-mobile' : 'main-desktop'">
-        <router-outlet></router-outlet>
+    <div class="main-content" (window:resize)="onResize()">
+      <header role="banner">
+        <app-topnav (sidenavToggle)="sidebarVisible = true" id="navigation"></app-topnav>
+      </header>
+      <main id="main-content" role="main" class="pt-28 px-6">
+        <div [hidden]="loadingRouteConfig" [ngClass]="isMobile ? 'main-mobile' : 'main-desktop'">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+      <div
+        id="loading-screen"
+        *ngIf="loadingRouteConfig"
+        class="flex flex-col items-center justify-center min-h-screen"
+      >
+        <p-progressSpinner
+          [style]="{ width: '50px', height: '50px' }"
+          strokeWidth="4"
+          fill="transparent"
+          animationDuration="1s"
+        ></p-progressSpinner>
+        <p class="mt-4 text-lg">Loading route config...</p>
       </div>
-    </main>
-    <div id="loading-screen" *ngIf="loadingRouteConfig" class="flex flex-col items-center justify-center min-h-screen">
-      <p-progressSpinner [style]="{'width': '50px', 'height': '50px'}" strokeWidth="4" fill="transparent" animationDuration="1s"></p-progressSpinner>
-      <p class="mt-4 text-lg">Loading route config...</p>
     </div>
   </div>
-</div>
-<app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
